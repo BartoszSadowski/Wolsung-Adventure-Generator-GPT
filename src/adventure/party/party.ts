@@ -1,5 +1,5 @@
-import {PartyType} from "./partyType";
+import { PartyType } from './partyType';
 
 export abstract class Party {
-    abstract partyType: PartyType;
+  abstract partyType: PartyType;
 }

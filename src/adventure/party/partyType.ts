@@ -1,6 +1,6 @@
 export enum PartyType {
-    GM = 'GM',
-    TEAM = 'team',
-    ANTAGONIST = 'antagonist',
-    GOAL = 'goal'
+  GM = 'GM',
+  TEAM = 'team',
+  ANTAGONIST = 'antagonist',
+  GOAL = 'goal',
 }

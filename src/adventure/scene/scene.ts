@@ -1,15 +1,19 @@
-import {PartyType} from "../party/partyType";
+import { PartyType } from '../party/partyType';
 
 export class Scene {
-    goals: Partial<Record<PartyType, String>> = {};
-    where = "";
-    initialConditions = "";
-    result = "";
-    problems = [];
+  goals: Partial<Record<PartyType, string>> = {};
+
+  where = '';
+
+  initialConditions = '';
+
+  result = '';
+
+  problems = [];
 
 
-    protected addGoal(key: PartyType, value: String) {
-        this.goals[key] = value;
-    }
+  protected addGoal(key: PartyType, value: string) {
+    this.goals[key] = value;
+  }
 
 }

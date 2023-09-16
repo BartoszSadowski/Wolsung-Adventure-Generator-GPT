@@ -1,13 +1,13 @@
-import {Party} from "./party";
-import {PartyType} from "./partyType";
+import { Party } from './party';
+import { PartyType } from './partyType';
 
 export class GoalParty extends Party {
-    partyType = PartyType.GOAL;
+  partyType = PartyType.GOAL;
 
-    constructor(
-        public readonly type: String,
-        public readonly name: String
-    ) {
-        super();
-    }
+  constructor(
+    public readonly type: string,
+    public readonly name: string,
+  ) {
+    super();
+  }
 }
