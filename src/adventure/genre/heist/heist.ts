@@ -6,11 +6,19 @@ import { ActionScene } from './action.scene';
 import { ComplicationScene } from './complication.scene';
 import { ConclusionScene } from './conclusion.scene';
 import { GoalParty } from '../../party/goal/goal.party';
+import { ModifierProvider } from './modifier.provider';
 
 export class Heist extends Genre {
+  private readonly modifierProvider = new ModifierProvider();
+
   getStructure(): Adventure {
     this.addTreasureParty();
+    this.addModifiers();
 
+    return this.getAdventure();
+  }
+
+  private getAdventure() {
     const adventure = new Adventure();
     adventure.act1 = new TeamUpScene(this.parties);
     adventure.act2 = new PlanningScene(this.parties);
@@ -24,5 +32,9 @@ export class Heist extends Genre {
   private addTreasureParty() {
     const treasure = new GoalParty('treasure', 'name');
     this.parties.push(treasure);
+  }
+
+  private addModifiers() {
+    this.modifierProvider.get(this.parties);
   }
 }

@@ -6,11 +6,11 @@ export class Scene {
 
   where = '';
 
-  initialConditions = '';
-
-  result = '';
+  what = '';
 
   problems = [];
+
+  possibilities = [];
 
   constructor(protected readonly parties: Array<Party> = []) {
   }
@@ -19,9 +19,9 @@ export class Scene {
     return {
       goals: this.goals,
       where: this.where,
-      initialConditions: this.initialConditions,
-      result: this.result,
+      what: this.what,
       problems: this.problems,
+      possibilities: this.possibilities,
     };
   }
 
