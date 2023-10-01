@@ -1,3 +1,3 @@
-export const TeamTags = {
+export const teamTags = {
   WANTED: 'wanted',
 };

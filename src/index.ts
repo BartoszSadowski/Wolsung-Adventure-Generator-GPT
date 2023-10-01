@@ -7,10 +7,10 @@ const app = express();
 const port = 8080;
 
 app.get('/', (req, res) => {
+  console.log('Generating new adventure');
   const adventure = provider.generate();
-  console.log('New adventure generated');
-  console.log(adventure);
 
+  console.log(adventure);
   res.send(adventure);
 });
 

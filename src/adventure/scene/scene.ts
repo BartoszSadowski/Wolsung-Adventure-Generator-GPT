@@ -1,12 +1,21 @@
 import { PartyType } from '../party/partyType';
 import { Party } from '../party/party';
+import { LocationBuilder } from '../location/locationBuilder';
+
+export interface SequenceElement {
+  who?: string;
+  what?: string;
+  with?: string;
+}
 
 export class Scene {
   goals: Partial<Record<PartyType, string>> = {};
 
+  locationBuilder = new LocationBuilder();
+
   where = '';
 
-  what = '';
+  sequence: Array<SequenceElement> = [];
 
   problems = [];
 
@@ -19,7 +28,7 @@ export class Scene {
     return {
       goals: this.goals,
       where: this.where,
-      what: this.what,
+      what: this.sequence,
       problems: this.problems,
       possibilities: this.possibilities,
     };

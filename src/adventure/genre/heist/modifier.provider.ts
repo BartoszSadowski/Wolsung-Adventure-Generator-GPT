@@ -1,9 +1,9 @@
 import { PartyType } from '../../party/partyType';
-import { TeamTags } from '../../party/team/teamTags';
+import { teamTags } from '../../party/team/teamTags';
 import { ScenePartProvider } from '../../scene/scenePart.provider';
 import { RelationType } from '../../party/relation';
 
-export class ModifierProvider extends ScenePartProvider {
+export class ModifierProvider extends ScenePartProvider<string> {
   providees = [
     {
       value: '-',
@@ -14,7 +14,8 @@ export class ModifierProvider extends ScenePartProvider {
       partiesAffected: [
         {
           type: PartyType.TEAM,
-          tag: TeamTags.WANTED,
+          tag: teamTags.WANTED,
+          probability: 1,
         },
       ],
     },
@@ -27,6 +28,7 @@ export class ModifierProvider extends ScenePartProvider {
             target: PartyType.ANTAGONIST,
             type: RelationType.PEOPLE.RELATIVE,
           },
+          probability: 1,
         },
       ],
     },
@@ -39,6 +41,7 @@ export class ModifierProvider extends ScenePartProvider {
             target: PartyType.ANTAGONIST,
             type: RelationType.PEOPLE.NEMESIS,
           },
+          probability: 1,
         },
       ],
     },

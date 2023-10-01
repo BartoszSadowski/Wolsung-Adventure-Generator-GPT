@@ -1,10 +1,10 @@
 import { Adventure } from '../../adventure';
 import { Genre } from '../genre';
 import { TeamUpScene } from './teamUp/teamUp.scene';
-import { PlanningScene } from './planning.scene';
-import { ActionScene } from './action.scene';
-import { ComplicationScene } from './complication.scene';
-import { ConclusionScene } from './conclusion.scene';
+import { PlanningScene } from './planning/planning.scene';
+import { ActionScene } from './action/action.scene';
+import { ComplicationScene } from './complication/complication.scene';
+import { ConclusionScene } from './conclusion/conclusion.scene';
 import { GoalParty } from '../../party/goal/goal.party';
 import { ModifierProvider } from './modifier.provider';
 
