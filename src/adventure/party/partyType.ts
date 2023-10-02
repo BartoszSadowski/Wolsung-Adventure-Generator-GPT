@@ -3,6 +3,7 @@ export enum PartyType {
   TEAM = 'team',
   ANTAGONIST = 'antagonist',
   GOAL = 'goal',
+  LOCATION = 'location',
 }
 
 export const partyTypeTranslations: Record<PartyType, string> = {
@@ -10,4 +11,5 @@ export const partyTypeTranslations: Record<PartyType, string> = {
   antagonist: 'antagonista',
   goal: 'cel',
   team: 'drużyna',
+  location: 'miejsce',
 };

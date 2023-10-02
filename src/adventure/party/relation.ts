@@ -14,4 +14,7 @@ export const RelationType = {
     RELATIVE: 'relative',
     NEMESIS: 'nemesis',
   },
+  LOCATION: {
+    CONTAINS: 'contains',
+  },
 };

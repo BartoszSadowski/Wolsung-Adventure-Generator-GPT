@@ -1,5 +1,5 @@
 export class LocationTag {
-  tag: string;
+  value: string;
 
   negated?: boolean;
 }

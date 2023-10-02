@@ -2,6 +2,7 @@ import { SequenceElement } from '../../../scene/scene';
 import { ScenePartProvider } from '../../../scene/scenePart.provider';
 import { PartyType, partyTypeTranslations } from '../../../party/partyType';
 import { goalTags } from '../../../party/goal/goalTags';
+import { locationTags } from '../../../location/locationTags';
 
 export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceElement> {
   private readonly WHAT = 'dowiaduje się o celu';
@@ -20,7 +21,26 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
           probability: 1,
         },
       ],
-      affectsLocation: [],
+      affectsLocation: [
+        {
+          tag: {
+            value: locationTags.PEACEFUL,
+          },
+          probability: 1,
+        },
+        {
+          tag: {
+            value: locationTags.COFFEE_TIME,
+          },
+          probability: 0.5,
+        },
+        {
+          tag: {
+            value: locationTags.PUBLIC_PLACE,
+          },
+          probability: 0.5,
+        },
+      ],
     },
     {
       value: {
@@ -30,10 +50,17 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
       },
       partiesAffected: [
         {
-          type: PartyType.GOAL,
+          type: PartyType.LOCATION,
           probability: 1,
+          tag: locationTags.MUSEUM,
         },
       ],
+      affectsLocation: [{
+        tag: {
+          value: locationTags.MUSEUM,
+        },
+        probability: 1,
+      }],
     },
     {
       value: {
@@ -42,6 +69,24 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
         what: this.WHAT,
       },
       partiesAffected: [],
+      affectsLocation: [{
+        tag: {
+          value: locationTags.PEACEFUL,
+        },
+        probability: 1,
+      },
+      {
+        tag: {
+          value: locationTags.COFFEE_TIME,
+        },
+        probability: 0.5,
+      },
+      {
+        tag: {
+          value: locationTags.PUBLIC_PLACE,
+        },
+        probability: 0.5,
+      }],
     },
   ];
 }

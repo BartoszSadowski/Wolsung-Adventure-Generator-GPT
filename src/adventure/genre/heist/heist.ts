@@ -7,6 +7,9 @@ import { ComplicationScene } from './complication/complication.scene';
 import { ConclusionScene } from './conclusion/conclusion.scene';
 import { GoalParty } from '../../party/goal/goal.party';
 import { ModifierProvider } from './modifier.provider';
+import { LocationParty } from '../../party/location/location.party';
+import { PartyType } from '../../party/partyType';
+import { RelationType } from '../../party/relation';
 
 export class Heist extends Genre {
   private readonly modifierProvider = new ModifierProvider();
@@ -30,8 +33,13 @@ export class Heist extends Genre {
   }
 
   private addTreasureParty() {
-    const treasure = new GoalParty('treasure', 'name');
-    this.parties.push(treasure);
+    this.parties.push(new GoalParty('treasure', 'name'));
+    const location = new LocationParty();
+    location.relations.push({
+      target: PartyType.GOAL,
+      type: RelationType.LOCATION.CONTAINS,
+    });
+    this.parties.push(location);
   }
 
   private addModifiers() {
