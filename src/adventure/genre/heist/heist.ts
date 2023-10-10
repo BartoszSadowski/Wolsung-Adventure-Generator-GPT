@@ -9,7 +9,7 @@ import { GoalParty } from '../../party/goal/goal.party';
 import { ModifierProvider } from './modifier.provider';
 import { LocationParty } from '../../party/location/location.party';
 import { PartyType } from '../../party/partyType';
-import { RelationType } from '../../party/relation';
+import { relationType } from '../../party/relation';
 
 export class Heist extends Genre {
   private readonly modifierProvider = new ModifierProvider();
@@ -33,11 +33,11 @@ export class Heist extends Genre {
   }
 
   private addTreasureParty() {
-    this.parties.push(new GoalParty('treasure', 'name'));
-    const location = new LocationParty();
+    this.parties.push(new GoalParty('treasure'));
+    const location = new LocationParty('treasure location');
     location.relations.push({
       target: PartyType.GOAL,
-      type: RelationType.LOCATION.CONTAINS,
+      type: relationType.LOCATION.CONTAINS,
     });
     this.parties.push(location);
   }

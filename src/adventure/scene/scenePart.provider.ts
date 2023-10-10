@@ -4,7 +4,7 @@ import { getRandomElement } from '../../random/list.utils';
 import { Relation } from '../party/relation';
 import { isFalse } from '../../random/probability.utils';
 import { LocationBuilder } from '../location/locationBuilder';
-import { LocationTag } from '../location/locationTag';
+import { Tag } from '../../common/tag';
 
 export interface AffectedParty {
   type: PartyType;
@@ -15,7 +15,7 @@ export interface AffectedParty {
 }
 
 export interface AffectingLocation {
-  tag: LocationTag,
+  tag: Tag,
   probability: number;
 }
 
@@ -26,7 +26,7 @@ export interface Providee<T> {
 }
 
 export abstract class ScenePartProvider<T> {
-  protected abstract providees: Array<Providee<T>>;
+  protected providees: Array<Providee<T>> = [];
 
   get(parties: Array<Party>, locationBuilder?: LocationBuilder) {
     const providee = getRandomElement(this.providees);

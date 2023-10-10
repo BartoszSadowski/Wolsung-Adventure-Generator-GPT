@@ -12,7 +12,7 @@ export class AdventureProvider {
 
     const genre = GenreProvider.provideRandom(parties);
     const structure = genre.getStructure();
-    console.log(parties);
+    console.log('parties:', JSON.stringify(parties, null, '  '));
 
     return structure.toJson();
   }

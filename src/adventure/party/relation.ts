@@ -9,12 +9,13 @@ export class Relation {
   }
 }
 
-export const RelationType = {
+export const relationType = {
   PEOPLE: {
     RELATIVE: 'relative',
     NEMESIS: 'nemesis',
   },
   LOCATION: {
     CONTAINS: 'contains',
+    OWNED: 'owned',
   },
 };

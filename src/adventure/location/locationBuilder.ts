@@ -1,4 +1,4 @@
-import { LocationTag } from './locationTag';
+import { Tag } from '../../common/tag';
 import { getRandomElement } from '../../random/list.utils';
 import { locationTags } from './locationTags';
 
@@ -25,7 +25,7 @@ export class LocationBuilder {
     },
   ];
 
-  private readonly tags: Array<LocationTag> = [];
+  private readonly tags: Array<Tag> = [];
 
   getLocation(): string {
     const matchingLocations = this.findLocationMatchingLogs();
@@ -35,7 +35,7 @@ export class LocationBuilder {
     return getRandomElement(matchingLocations).value;
   }
 
-  addTag(tag: LocationTag) {
+  addTag(tag: Tag) {
     this.tags.push(tag);
   }
 

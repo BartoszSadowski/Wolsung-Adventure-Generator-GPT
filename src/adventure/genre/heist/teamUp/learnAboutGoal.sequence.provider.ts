@@ -3,6 +3,7 @@ import { ScenePartProvider } from '../../../scene/scenePart.provider';
 import { PartyType, partyTypeTranslations } from '../../../party/partyType';
 import { goalTags } from '../../../party/goal/goalTags';
 import { locationTags } from '../../../location/locationTags';
+import { Relation, relationType } from '../../../party/relation';
 
 export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceElement> {
   private readonly WHAT = 'dowiaduje się o celu';
@@ -18,6 +19,15 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
         {
           type: PartyType.GOAL,
           tag: goalTags.PERSONAL,
+          probability: 1,
+        },
+        {
+          type: PartyType.LOCATION,
+          tag: locationTags.PRIVATE_COLLECTION,
+          relation: new Relation(
+            PartyType.ANTAGONIST,
+            relationType.LOCATION.OWNED,
+          ),
           probability: 1,
         },
       ],
@@ -54,6 +64,11 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
           probability: 1,
           tag: locationTags.MUSEUM,
         },
+        {
+          type: PartyType.GOAL,
+          tag: goalTags.ARTIFACT,
+          probability: 1,
+        },
       ],
       affectsLocation: [{
         tag: {
@@ -68,7 +83,18 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
         with: 'gazeta',
         what: this.WHAT,
       },
-      partiesAffected: [],
+      partiesAffected: [
+        {
+          type: PartyType.GOAL,
+          tag: goalTags.ARTIFACT,
+          probability: 1,
+        },
+        {
+          type: PartyType.LOCATION,
+          probability: 1,
+          tag: locationTags.MUSEUM,
+        },
+      ],
       affectsLocation: [{
         tag: {
           value: locationTags.PEACEFUL,

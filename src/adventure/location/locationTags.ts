@@ -3,4 +3,5 @@ export const locationTags = {
   PEACEFUL: 'peaceful',
   COFFEE_TIME: 'coffee time',
   PUBLIC_PLACE: 'public place',
+  PRIVATE_COLLECTION: 'private collection',
 };

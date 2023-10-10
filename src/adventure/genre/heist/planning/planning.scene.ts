@@ -6,5 +6,7 @@ export class PlanningScene extends Scene {
   constructor(parties: Array<Party>) {
     super(parties);
     this.addGoal(PartyType.GM, 'Przedstawić trudności w osiągnięciu celu');
+    this.addGoal(PartyType.TEAM, 'Przygotować się do akcji');
+    this.addGoal(PartyType.ANTAGONIST, 'Zabezpieczyć cel');
   }
 }
