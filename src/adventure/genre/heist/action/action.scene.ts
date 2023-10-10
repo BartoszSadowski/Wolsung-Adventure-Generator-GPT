@@ -7,4 +7,8 @@ export class ActionScene extends Scene {
     super(parties);
     this.addGoal(PartyType.GM, 'Pozwolić drużynie poczuć cel w garści');
   }
+
+  // Test weryfikujący czy udało się wykraść przedmiot (definiuje nastrój pozostałych scen)
+  // Szanse dodatkowe zyski
+  // Zagrożenia wczesne wykrycie, zdrady, generowane
 }

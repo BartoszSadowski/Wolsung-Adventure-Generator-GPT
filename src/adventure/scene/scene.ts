@@ -6,6 +6,8 @@ export interface SequenceElement {
   who?: string;
   what?: string;
   with?: string;
+  problems?: Array<string>;
+  possibilities?: Array<string>;
 }
 
 export class Scene {
@@ -17,10 +19,6 @@ export class Scene {
 
   sequence: Array<SequenceElement> = [];
 
-  problems = [];
-
-  possibilities = [];
-
   constructor(protected readonly parties: Array<Party> = []) {
   }
 
@@ -29,8 +27,6 @@ export class Scene {
       goals: this.goals,
       where: this.where,
       what: this.sequence,
-      problems: this.problems,
-      possibilities: this.possibilities,
     };
   }
 

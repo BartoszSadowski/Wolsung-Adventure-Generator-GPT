@@ -9,4 +9,8 @@ export class PlanningScene extends Scene {
     this.addGoal(PartyType.TEAM, 'Przygotować się do akcji');
     this.addGoal(PartyType.ANTAGONIST, 'Zabezpieczyć cel');
   }
+
+  // Wyzwanie gdzie celem jest przygotowanie się do skoku, sukces to bazowy poziom trudności w kradzieży, porażka to pogorszenie stanu
+  // Zagrożenia bazujące na tym co chce się ukraść
+  // Szanse przewidziane konkretne zabezpieczenia / NPC pomocnicy dający jednorazowo odpowiednie bonusy
 }

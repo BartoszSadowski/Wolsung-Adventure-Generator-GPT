@@ -32,6 +32,6 @@ export class TeamUpScene extends Scene {
   }
 
   private goalDescription() {
-    this.sequence.push(this.goalDescriptionProvider.get(this.parties, this.locationBuilder));
+    this.sequence.push(this.goalDescriptionProvider.get(this.parties));
   }
 }

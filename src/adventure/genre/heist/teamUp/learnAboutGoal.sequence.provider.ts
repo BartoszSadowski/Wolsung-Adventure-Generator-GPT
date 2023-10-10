@@ -12,8 +12,8 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
     {
       value: {
         who: partyTypeTranslations[PartyType.TEAM],
-        with: 'list od przyjaciela',
         what: this.WHAT,
+        with: 'list od przyjaciela',
       },
       partiesAffected: [
         {
@@ -55,8 +55,8 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
     {
       value: {
         who: partyTypeTranslations[PartyType.TEAM],
-        with: 'wizyta w muzeum',
         what: this.WHAT,
+        with: 'wizyta w muzeum',
       },
       partiesAffected: [
         {
@@ -80,8 +80,8 @@ export class LearnAboutGoalSequenceProvider extends ScenePartProvider<SequenceEl
     {
       value: {
         who: partyTypeTranslations[PartyType.TEAM],
-        with: 'gazeta',
         what: this.WHAT,
+        with: 'gazeta',
       },
       partiesAffected: [
         {

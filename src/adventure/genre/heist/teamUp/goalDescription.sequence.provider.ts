@@ -1,21 +1,18 @@
-import { ScenePartProvider } from '../../../scene/scenePart.provider';
-import { SequenceElement } from '../../../scene/scene';
 import { Party } from '../../../party/party';
 import { PartyType } from '../../../party/partyType';
-import { LocationBuilder } from '../../../location/locationBuilder';
 import { GoalParty } from '../../../party/goal/goal.party';
 import { relationType } from '../../../party/relation';
 import { LocationParty } from '../../../party/location/location.party';
 import { TreasureProvider } from '../../../party/goal/treasure.provider';
 import { AntagonistParty } from '../../../party/antagonist/antagonist.party';
 
-export class GoalDescriptionSequenceProvider extends ScenePartProvider<SequenceElement> {
+export class GoalDescriptionSequenceProvider {
   private readonly treasureProvider = new TreasureProvider();
 
-  get(parties: Party[], locationBuilder: LocationBuilder) {
+  get(parties: Party[]) {
     return {
       who: this.getGoal(parties),
-      what: 'todo',
+      what: 'zostaje opisany',
     };
   }
 
@@ -36,9 +33,8 @@ export class GoalDescriptionSequenceProvider extends ScenePartProvider<SequenceE
     if (name) return name;
 
     const treasure = this.treasureProvider.getFromParties([goalParty, locationParty, antagonistParty]);
-    console.log(`treasure: ${JSON.stringify(treasure)}`);
     goalParty.name = treasure.name;
-
+    goalParty.securityMeasures = treasure.securityMeasures;
 
     return goalParty.name;
   }
