@@ -1,13 +1,14 @@
 import { PartyType } from '../party/partyType';
 import { Party } from '../party/party';
 import { LocationBuilder } from '../location/locationBuilder';
+import { Test } from '../system/test';
+
 
 export interface SequenceElement {
   who?: string;
   what?: string;
   with?: string;
-  problems?: Array<string>;
-  possibilities?: Array<string>;
+  test?: Test;
 }
 
 export class Scene {

@@ -1,10 +1,4 @@
-function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max);
-}
-
-function getRandomIntInRange(min: number, max: number) {
-  return min + Math.floor(Math.random() * (max - min));
-}
+import { getRandomInt, getRandomIntInRange } from './number.utils';
 
 export function getRandomElement<T>(list: Array<T>): T {
   const index = getRandomInt(list.length);

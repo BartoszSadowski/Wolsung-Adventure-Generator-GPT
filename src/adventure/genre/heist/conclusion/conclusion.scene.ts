@@ -8,5 +8,6 @@ export class ConclusionScene extends Scene {
     this.addGoal(PartyType.GM, 'Wyciszyć graczy, dać nacieszyć się zwycięstwem');
   }
 
+  // TODO
   // Predefiniowany json umożliwiający przygotowanie ciekawego opisu opisujący następstwa sukcesu i porażki
 }

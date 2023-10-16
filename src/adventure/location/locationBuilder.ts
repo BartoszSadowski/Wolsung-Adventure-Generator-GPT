@@ -23,6 +23,13 @@ export class LocationBuilder {
         locationTags.PUBLIC_PLACE,
       ],
     },
+    {
+      value: 'Miasto',
+      matchingTags: [
+        locationTags.CITY,
+        locationTags.BROAD,
+      ],
+    },
   ];
 
   private readonly tags: Array<Tag> = [];
@@ -35,7 +42,8 @@ export class LocationBuilder {
     return getRandomElement(matchingLocations).value;
   }
 
-  addTag(tag: Tag) {
+  addTag(value: Tag | string) {
+    const tag = typeof value === 'string' ? new Tag(value) : value;
     this.tags.push(tag);
   }
 
