@@ -1,7 +1,8 @@
 import { PartyType } from '../party/partyType';
 import { Party } from '../party/party';
 import { LocationBuilder } from '../location/locationBuilder';
-import { Test } from '../system/test';
+import { Test } from '../system/test/test';
+import { Advantage } from '../system/advantage/advantage';
 
 
 export interface SequenceElement {
@@ -20,6 +21,8 @@ export class Scene {
 
   sequence: Array<SequenceElement> = [];
 
+  advantages: Array<Advantage> = [];
+
   constructor(protected readonly parties: Array<Party> = []) {
   }
 
@@ -28,6 +31,7 @@ export class Scene {
       goals: this.goals,
       where: this.where,
       what: this.sequence,
+      advantages: this.advantages,
     };
   }
 

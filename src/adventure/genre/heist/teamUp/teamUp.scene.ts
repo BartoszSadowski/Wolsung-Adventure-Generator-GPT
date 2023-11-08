@@ -3,6 +3,7 @@ import { PartyType } from '../../../party/partyType';
 import { Party } from '../../../party/party';
 import { LearnAboutGoalSequenceProvider } from './learnAboutGoal.sequence.provider';
 import { GoalDescriptionSequenceProvider } from './goalDescription.sequence.provider';
+import { PlaceOfActionParty } from '../../../party/placeOfAction/placeOfAction.party';
 
 export class TeamUpScene extends Scene {
   private readonly learnAboutProvider = new LearnAboutGoalSequenceProvider();
@@ -14,7 +15,15 @@ export class TeamUpScene extends Scene {
     super(parties);
     this.addGoals();
     this.prepareSequence();
-    this.where = this.locationBuilder.getLocation();
+    this.prepareWhere();
+  }
+
+  private prepareWhere() {
+    const location = this.locationBuilder.getLocation();
+    const placeOfAction = this.parties
+      .find(party => party.partyType === PartyType.PLACE_OF_ACTION) as unknown as PlaceOfActionParty;
+
+    this.where = `${location} - ${placeOfAction.city} - ${placeOfAction.country}`;
   }
 
   private addGoals() {

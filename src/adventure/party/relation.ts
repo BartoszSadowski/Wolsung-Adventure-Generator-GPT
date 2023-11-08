@@ -16,6 +16,7 @@ export const relationType = {
   },
   LOCATION: {
     CONTAINS: 'contains',
+    IN: 'in',
     OWNED: 'owned',
   },
 };

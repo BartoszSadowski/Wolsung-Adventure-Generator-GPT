@@ -2,6 +2,7 @@ import { Party } from '../../../party/party';
 import { SequenceElement } from '../../../scene/scene';
 import { PreparationsTestProvider } from './preparations.test.provider';
 import { PartyType, partyTypeTranslations } from '../../../party/partyType';
+import { Advantage } from '../../../system/advantage/advantage';
 
 export class PreparationsSequenceProvider {
 
@@ -9,15 +10,16 @@ export class PreparationsSequenceProvider {
 
   private readonly WHAT = 'Przygotowuje się do akcji.';
 
-  get(parties: Party[]): SequenceElement {
+  get(parties: Party[], advantages: Advantage[]): SequenceElement {
     const test = this.preparationsTestProvider.get(
       'Obniżenie poziomu trudności skoku o jeden poziom wyzwania',
       'Zwiększenie poziomu napięcia o 1',
+      parties,
+      advantages,
     );
 
     // TODO
-    // Zagrożenia bazujące na tym co chce się ukraść
-    // Szanse przewidziane konkretne zabezpieczenia / NPC pomocnicy dający jednorazowo odpowiednie bonusy
+    // Zagrożenia utrudniające kradzierz
 
     return {
       who: partyTypeTranslations[PartyType.TEAM],

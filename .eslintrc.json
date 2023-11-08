@@ -11,5 +11,13 @@
     "@typescript-eslint",
     "import"
   ],
-  "root": true
+  "root": true,
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ]
+  }
 }

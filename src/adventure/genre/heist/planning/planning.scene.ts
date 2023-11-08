@@ -1,8 +1,8 @@
 import { Scene } from '../../../scene/scene';
 import { PartyType } from '../../../party/partyType';
 import { Party } from '../../../party/party';
-import { locationTags } from '../../../location/locationTags';
 import { PreparationsSequenceProvider } from './preparations.sequence.provider';
+import { PlaceOfActionParty } from '../../../party/placeOfAction/placeOfAction.party';
 
 export class PlanningScene extends Scene {
   private readonly preparationsProvider = new PreparationsSequenceProvider();
@@ -22,9 +22,9 @@ export class PlanningScene extends Scene {
   }
 
   private prepareWhere() {
-    this.locationBuilder.addTag(locationTags.CITY);
-    this.locationBuilder.addTag(locationTags.BROAD);
-    this.where = this.locationBuilder.getLocation();
+    const placeOfAction = this.parties
+      .find(party => party.partyType === PartyType.PLACE_OF_ACTION) as unknown as PlaceOfActionParty;
+    this.where = placeOfAction.city;
   }
 
   private prepareSequence() {
@@ -32,7 +32,7 @@ export class PlanningScene extends Scene {
   }
 
   private prepare() {
-    this.sequence.push(this.preparationsProvider.get(this.parties));
+    this.sequence.push(this.preparationsProvider.get(this.parties, this.advantages));
   }
 
 

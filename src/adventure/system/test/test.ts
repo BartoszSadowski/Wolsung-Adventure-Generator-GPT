@@ -1,4 +1,5 @@
 import { TestType } from './test.type';
+import { CardEffect } from '../cards/card';
 
 export class Test {
 
@@ -11,9 +12,9 @@ export class Test {
 
     private _aces: Array<string> = [];
 
-    private _chances: Array<string> = [];
+    private _chances: Array<CardEffect> = [];
 
-    private _dangers: Array<string> = [];
+    private _dangers: Array<CardEffect> = [];
 
     private _testType: TestType = TestType.TEST;
 
@@ -36,12 +37,12 @@ export class Test {
       return this;
     }
 
-    result(value: string) {
+    public result(value: string) {
       this._result = value;
       return this;
     }
 
-    consequence(value: string) {
+    public consequence(value: string) {
       this._consequence = value;
       return this;
     }
@@ -51,12 +52,12 @@ export class Test {
       return this;
     }
 
-    public chances(value: Array<string>) {
+    public chances(value: Array<CardEffect>) {
       this._chances = value;
       return this;
     }
 
-    public dangers(value: Array<string>) {
+    public dangers(value: Array<CardEffect>) {
       this._dangers = value;
       return this;
     }
@@ -89,8 +90,8 @@ export class Test {
     private readonly result: string,
     private readonly consequence: string,
     private readonly aces: Array<string>,
-    private readonly chances: Array<string>,
-    private readonly dangers: Array<string>,
+    private readonly chances: Array<CardEffect>,
+    private readonly dangers: Array<CardEffect>,
     private readonly testType: TestType,
   ) {
   }
