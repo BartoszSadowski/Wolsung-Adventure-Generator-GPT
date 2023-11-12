@@ -18,9 +18,6 @@ export class PreparationsSequenceProvider {
       advantages,
     );
 
-    // TODO
-    // Zagrożenia utrudniające kradzierz
-
     return {
       who: partyTypeTranslations[PartyType.TEAM],
       what: this.WHAT,

@@ -23,7 +23,7 @@ export class PreparationsTestChancesSource {
     const selectedSecurityMeasure = getRandomElement(this.goalParty.securityMeasures || []);
 
     return [
-      ChanceSystem.information(Color.SPADES, `Informacja o jednym z zabezpieczeń: ${selectedSecurityMeasure}`),
+      ChanceSystem.lead(Color.SPADES, `Informacja o jednym z zabezpieczeń: ${selectedSecurityMeasure}`),
       ChanceSystem.regainAttribute(Color.SPADES, 'Zaimponuj w towarzystwie'),
     ];
   }
@@ -54,8 +54,8 @@ export class PreparationsTestChancesSource {
 
   public getClubs(): Array<CardEffect> {
     return [
-      ChanceSystem.lead(Color.DIAMONDS, 'Nexus w centrum parku'),
-      ChanceSystem.regainAttribute(Color.DIAMONDS, 'Magiczne ciateczko'),
+      ChanceSystem.regenerateAttribute(Color.CLUBS, 'Nexus w centrum parku'),
+      ChanceSystem.regainAttribute(Color.CLUBS, 'Magiczne ciateczko'),
     ];
   }
 }

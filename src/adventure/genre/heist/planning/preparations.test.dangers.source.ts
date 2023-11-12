@@ -1,41 +1,35 @@
 import { CardEffect, Color } from '../../../system/cards/card';
+import { DangerSystem } from '../../../system/cards/danger.system';
 
 export class PreparationsTestDangersSource {
   public static getSpades(): Array<CardEffect> {
-    return ['']
-      .map(description => new CardEffect(
-        Color.SPADES,
-        description,
-        '',
-      ));
+    return [
+      DangerSystem.lead(Color.SPADES, 'Przeciwnik dowiaduje się o planach drużyny'),
+      DangerSystem.loseAttribute(Color.SPADES, 'Niechciane spotkanie'),
+    ];
   }
 
   public static getHearts(): Array<CardEffect> {
-    return ['']
-      .map(description => new CardEffect(
-        Color.HEARTS,
-        description,
-        '',
-      ));
+    return [
+      DangerSystem.loseAttribute(Color.HEARTS, 'Otwarta studzienka ściekowa'),
+      DangerSystem.loseAttribute(Color.HEARTS, 'Szkodliwe używki'),
+    ];
   }
 
 
   public static getDiamonds(): Array<CardEffect> {
-    return ['']
-      .map(description => new CardEffect(
-        Color.DIAMONDS,
-        description,
-        '',
-      ));
+    return [
+      DangerSystem.loseAdvantage(Color.DIAMONDS, 'Kieszonkowiec'),
+      DangerSystem.loseAttribute(Color.DIAMONDS, 'Hazard'),
+      DangerSystem.loseAttribute(Color.DIAMONDS, 'Długi karciane'),
+    ];
   }
 
   public static getClubs(): Array<CardEffect> {
-    return ['']
-      .map(description => new CardEffect(
-        Color.CLUBS,
-        description,
-        '',
-      ));
+    return [
+      DangerSystem.loseAdvantage(Color.CLUBS, 'Zwarcie instalacji manicznej'),
+      DangerSystem.loseAttribute(Color.CLUBS, 'Zbytnie folgowanie pokusom'),
+    ];
   }
 
 }
