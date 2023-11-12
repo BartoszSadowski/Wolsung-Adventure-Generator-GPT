@@ -14,3 +14,9 @@ export enum Race {
 export function getRandomRace() {
   return getRandomElement(Object.values(Race)) as Race;
 }
+
+export function getAllRacesSet(): Set<Race> {
+  return new Set<Race>([
+    Race.ELF, Race.OGRE, Race.TROLL, Race.GNOME,
+    Race.DWARF, Race.HALFLING, Race.NIKS, Race.ORC]);
+}

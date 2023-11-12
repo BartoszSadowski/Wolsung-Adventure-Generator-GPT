@@ -5,9 +5,12 @@ import { ChanceSystem } from '../../../system/cards/chance.system';
 import { GoalParty } from '../../../party/goal/goal.party';
 import { getRandomElement } from '../../../../random/list.utils';
 import { Advantage } from '../../../system/advantage/advantage';
+import { HeistAllyTemplateSource } from '../heist.allyTemplate.source';
+
 
 export class PreparationsTestChancesSource {
   private static allyProvider = new AllyProvider();
+
 
   private readonly goalParty: GoalParty;
 
@@ -26,7 +29,13 @@ export class PreparationsTestChancesSource {
   }
 
   public getHearts(): Array<CardEffect> {
-    const ally = PreparationsTestChancesSource.allyProvider.get(this.parties);
+    const template = getRandomElement(HeistAllyTemplateSource.templates);
+
+    const ally = PreparationsTestChancesSource.allyProvider.get(
+      this.parties,
+      template.description,
+      template.traits,
+    );
 
     this.advantages.push(ally);
 
