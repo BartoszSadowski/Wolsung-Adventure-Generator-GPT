@@ -1,8 +1,8 @@
 import { Adventure } from '../adventure';
-import { Party } from '../party/party';
+import { Parties } from '../party/parties';
 
 export abstract class Genre {
-  constructor(public readonly parties: Array<Party>) {
+  constructor(public readonly parties: Parties) {
   }
 
   abstract getStructure(): Adventure;

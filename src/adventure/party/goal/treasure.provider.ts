@@ -2,7 +2,6 @@ import { Tag } from '../../../common/tag';
 import { getRandomElement, getRandomSubList } from '../../../random/list.utils';
 import { Party } from '../party';
 import { goalTags } from './goalTags';
-import { locationTags } from '../../location/locationTags';
 import { relationType } from '../relation';
 
 export interface Treasure {
@@ -37,7 +36,6 @@ export class TreasureProvider {
     new TreasureClass(
       [
         new Tag(goalTags.ARTIFACT),
-        new Tag(locationTags.MUSEUM),
       ],
       [
         'Perła Mocy',
@@ -64,7 +62,6 @@ export class TreasureProvider {
     new TreasureClass(
       [
         new Tag(goalTags.PERSONAL),
-        new Tag(locationTags.PRIVATE_COLLECTION),
       ],
       [
         'Dziennik Tajemnych Schematów',
@@ -88,7 +85,6 @@ export class TreasureProvider {
     new TreasureClass(
       [
         new Tag(goalTags.PERSONAL),
-        new Tag(locationTags.PRIVATE_COLLECTION),
         new Tag(relationType.PEOPLE.RELATIVE),
       ],
       [

@@ -1,22 +1,20 @@
 import { AllyAdvantage, AllyDescription } from './ally.advantage';
-import { Party } from '../../../party/party';
 import { getRandomRace } from '../../../world/race';
 import { Country } from '../../../world/country';
 import { Gender, getRandomGender } from './gender';
-import { PartyType } from '../../../party/partyType';
-import { PlaceOfActionParty } from '../../../party/placeOfAction/placeOfAction.party';
 import { getRandomName, getRandomSurname } from '../../../world/name';
 import { AdvantageDescriptorProvider } from '../advantageDescriptor.provider';
 import { LooksSource } from './looks.source';
 import { DescriptionTraitSource } from './descriptionTrait.source';
 import { Trait } from '../trait/trait';
+import { Parties } from '../../../party/parties';
 
 export class AllyProvider {
   private readonly looksProvider = new AdvantageDescriptorProvider(new LooksSource());
 
   private readonly descriptionTraitProvider = new AdvantageDescriptorProvider(new DescriptionTraitSource());
 
-  get(parties: Array<Party>, description: string, traits: Array<Trait>) {
+  get(parties: Parties, description: string, traits: Array<Trait>) {
     const country = this.getCountryFromParties(parties);
     const allyDescription = this.getDescription(country);
 
@@ -47,8 +45,8 @@ export class AllyProvider {
     );
   }
 
-  private getCountryFromParties(parties: Array<Party>): Country {
-    const placeOfAction = parties.find(party => party.partyType === PartyType.PLACE_OF_ACTION) as PlaceOfActionParty;
+  private getCountryFromParties(parties: Parties): Country {
+    const placeOfAction = parties.getPlaceOfAction();
     return placeOfAction.country;
   }
 

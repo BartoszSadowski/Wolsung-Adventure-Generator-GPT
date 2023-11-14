@@ -5,6 +5,7 @@ import { Relation } from '../party/relation';
 import { isFalse } from '../../random/probability.utils';
 import { LocationBuilder } from '../location/locationBuilder';
 import { Tag } from '../../common/tag';
+import { Parties } from '../party/parties';
 
 export interface AffectedParty {
   type: PartyType;
@@ -12,6 +13,7 @@ export interface AffectedParty {
   relation?: Relation;
   probability: number;
   callback?: () => void;
+  propertyTags?: Record<string, Array<string>>;
 }
 
 export interface AffectingLocation {
@@ -28,7 +30,7 @@ export interface Providee<T> {
 export abstract class ScenePartProvider<T> {
   protected providees: Array<Providee<T>> = [];
 
-  get(parties: Array<Party>, locationBuilder?: LocationBuilder) {
+  get(parties: Parties, locationBuilder?: LocationBuilder) {
     const providee = getRandomElement(this.providees);
 
     this.handlePartiesAffected(providee, parties);
@@ -51,23 +53,22 @@ export abstract class ScenePartProvider<T> {
     });
   }
 
-  private handlePartiesAffected(providee: Providee<T>, parties: Array<Party>) {
+  private handlePartiesAffected(providee: Providee<T>, parties: Parties) {
     providee.partiesAffected.forEach(partyAffected => {
-      parties.some(party => {
-        if (
-          party.partyType !== partyAffected.type
-          || isFalse(partyAffected.probability)
-        ) {
-          return false;
-        }
+      if (isFalse(partyAffected.probability)) {
+        return;
+      }
 
-        this.addTag(party, partyAffected.tag);
-        this.addRelation(party, parties, partyAffected.relation);
+      const party = parties.getParty(partyAffected.type);
+      if (!party) {
+        return;
+      }
 
-        partyAffected.callback?.();
+      this.addTag(party, partyAffected.tag);
+      this.addPropertyTags(party, partyAffected.propertyTags);
+      this.addRelation(party, parties, partyAffected.relation);
 
-        return true;
-      });
+      partyAffected.callback?.();
     });
   }
 
@@ -79,16 +80,26 @@ export abstract class ScenePartProvider<T> {
     party.tags.push(tag);
   }
 
-  private addRelation(party: Party, parties: Array<Party>, relation?: Relation) {
+  private addRelation(party: Party, parties: Parties, relation?: Relation) {
     if (!relation) {
       return;
     }
-
-    const isTargetPartyPresent = parties.some(p => p.partyType == relation.target);
-    if (!isTargetPartyPresent) {
+    if (!parties.has(relation.target)) {
       return;
     }
 
     party.relations.push(relation);
+  }
+
+  private addPropertyTags(party: Party, propertyTags: Record<string, Array<string>> | undefined) {
+    if (!propertyTags) {
+      return;
+    }
+
+    Object.entries(propertyTags).forEach(([key, tags]) => {
+      tags.forEach(tag => {
+        party.addPropertyTag(key, tag);
+      });
+    });
   }
 }

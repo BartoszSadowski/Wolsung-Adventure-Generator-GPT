@@ -1,9 +1,9 @@
 import { Scene } from '../../../scene/scene';
 import { PartyType } from '../../../party/partyType';
-import { Party } from '../../../party/party';
+import { Parties } from '../../../party/parties';
 
 export class ComplicationScene extends Scene {
-  constructor(parties: Array<Party>) {
+  constructor(parties: Parties) {
     super(parties);
     this.addGoal(PartyType.GM, 'Podbić ekscytację');
   }

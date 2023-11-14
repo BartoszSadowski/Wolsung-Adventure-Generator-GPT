@@ -1,38 +1,30 @@
-import { Party } from '../../../party/party';
-import { PartyType } from '../../../party/partyType';
 import { GoalParty } from '../../../party/goal/goal.party';
-import { relationType } from '../../../party/relation';
-import { LocationParty } from '../../../party/location/location.party';
 import { TreasureProvider } from '../../../party/goal/treasure.provider';
 import { AntagonistParty } from '../../../party/antagonist/antagonist.party';
+import { Parties } from '../../../party/parties';
 
 export class GoalDescriptionSequenceProvider {
   private readonly treasureProvider = new TreasureProvider();
 
-  get(parties: Party[]) {
+  get(parties: Parties) {
     return {
       who: this.getGoal(parties),
       what: 'zostaje opisany',
     };
   }
 
-  getGoal(parties: Party[]) {
-    const goalParty = parties.find((party) => party.partyType === PartyType.GOAL) as GoalParty;
-    const locationParty = parties.find((party) =>
-      party.partyType === PartyType.LOCATION
-      && party.relations.some(relation =>
-        relation.target === PartyType.GOAL
-        && relation.type === relationType.LOCATION.CONTAINS)) as LocationParty;
-    const antagonistParty = parties.find(party => party.partyType === PartyType.ANTAGONIST) as AntagonistParty;
+  getGoal(parties: Parties) {
+    const goalParty = parties.getGoalParty();
+    const antagonistParty = parties.getAntagonistParty();
 
-    return this.getName(goalParty, locationParty, antagonistParty);
+    return this.getName(goalParty, antagonistParty);
   }
 
-  getName(goalParty: GoalParty, locationParty: LocationParty, antagonistParty: AntagonistParty) {
+  getName(goalParty: GoalParty, antagonistParty: AntagonistParty) {
     const name = goalParty.name;
     if (name) return name;
 
-    const treasure = this.treasureProvider.getFromParties([goalParty, locationParty, antagonistParty]);
+    const treasure = this.treasureProvider.getFromParties([goalParty, antagonistParty]);
     goalParty.name = treasure.name;
     goalParty.securityMeasures = treasure.securityMeasures;
 

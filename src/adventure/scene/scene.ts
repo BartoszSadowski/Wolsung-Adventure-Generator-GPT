@@ -1,8 +1,8 @@
 import { PartyType } from '../party/partyType';
-import { Party } from '../party/party';
 import { LocationBuilder } from '../location/locationBuilder';
 import { Test } from '../system/test/test';
 import { Advantage } from '../system/advantage/advantage';
+import { Parties } from '../party/parties';
 
 
 export interface SequenceElement {
@@ -23,7 +23,7 @@ export class Scene {
 
   advantages: Array<Advantage> = [];
 
-  constructor(protected readonly parties: Array<Party> = []) {
+  constructor(protected readonly parties: Parties = new Parties([])) {
   }
 
   toJson() {

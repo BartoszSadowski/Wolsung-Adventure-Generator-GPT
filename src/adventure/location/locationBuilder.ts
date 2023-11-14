@@ -35,7 +35,7 @@ export class LocationBuilder {
   private readonly tags: Array<Tag> = [];
 
   getLocation(): string {
-    const matchingLocations = this.findLocationMatchingLogs();
+    const matchingLocations = this.findLocationMatchingTags();
     if (matchingLocations.length === 0) {
       throw new Error(`Cannot find location for set of tags: ${this.tagsToString()}`);
     }
@@ -51,7 +51,7 @@ export class LocationBuilder {
     return this.tags.map(tag => `{value: ${tag.value}, negated: ${!!tag.negated}}`);
   }
 
-  private findLocationMatchingLogs() {
+  private findLocationMatchingTags() {
     return this.tags.reduce<Array<PossibleLocation>>((possibleLocations, tag) => {
       return possibleLocations
         .filter(location => location

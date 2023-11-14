@@ -1,7 +1,6 @@
 import { PartyType, partyTypeTranslations } from '../../../party/partyType';
 import { goalTags } from '../../../party/goal/goalTags';
 import { locationTags } from '../../../location/locationTags';
-import { Relation, relationType } from '../../../party/relation';
 
 export class LearnAboutGoalSequenceSource {
 
@@ -20,34 +19,20 @@ export class LearnAboutGoalSequenceSource {
             type: PartyType.GOAL,
             tag: goalTags.PERSONAL,
             probability: 1,
-          },
-          {
-            type: PartyType.LOCATION,
-            tag: locationTags.PRIVATE_COLLECTION,
-            relation: new Relation(
-              PartyType.ANTAGONIST,
-              relationType.LOCATION.OWNED,
-            ),
-            probability: 1,
+            propertyTags: { location: [locationTags.PRIVATE_COLLECTION] },
           },
         ],
         affectsLocation: [
           {
-            tag: {
-              value: locationTags.PEACEFUL,
-            },
+            tag: { value: locationTags.PEACEFUL },
             probability: 1,
           },
           {
-            tag: {
-              value: locationTags.COFFEE_TIME,
-            },
+            tag: { value: locationTags.COFFEE_TIME },
             probability: 0.5,
           },
           {
-            tag: {
-              value: locationTags.PUBLIC_PLACE,
-            },
+            tag: { value: locationTags.PUBLIC_PLACE },
             probability: 0.5,
           },
         ],
@@ -60,20 +45,14 @@ export class LearnAboutGoalSequenceSource {
         },
         partiesAffected: [
           {
-            type: PartyType.LOCATION,
-            probability: 1,
-            tag: locationTags.MUSEUM,
-          },
-          {
             type: PartyType.GOAL,
             tag: goalTags.ARTIFACT,
             probability: 1,
+            propertyTags: { location: [locationTags.MUSEUM] },
           },
         ],
         affectsLocation: [{
-          tag: {
-            value: locationTags.MUSEUM,
-          },
+          tag: { value: locationTags.MUSEUM },
           probability: 1,
         }],
       },
@@ -88,29 +67,19 @@ export class LearnAboutGoalSequenceSource {
             type: PartyType.GOAL,
             tag: goalTags.ARTIFACT,
             probability: 1,
-          },
-          {
-            type: PartyType.LOCATION,
-            probability: 1,
-            tag: locationTags.MUSEUM,
+            propertyTags: { location: [locationTags.MUSEUM] },
           },
         ],
         affectsLocation: [{
-          tag: {
-            value: locationTags.PEACEFUL,
-          },
+          tag: { value: locationTags.PEACEFUL },
           probability: 1,
         },
         {
-          tag: {
-            value: locationTags.COFFEE_TIME,
-          },
+          tag: { value: locationTags.COFFEE_TIME },
           probability: 0.5,
         },
         {
-          tag: {
-            value: locationTags.PUBLIC_PLACE,
-          },
+          tag: { value: locationTags.PUBLIC_PLACE },
           probability: 0.5,
         }],
       },

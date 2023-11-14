@@ -1,8 +1,8 @@
-import { Party } from '../../../party/party';
 import { SequenceElement } from '../../../scene/scene';
 import { PreparationsTestProvider } from './preparations.test.provider';
 import { PartyType, partyTypeTranslations } from '../../../party/partyType';
 import { Advantage } from '../../../system/advantage/advantage';
+import { Parties } from '../../../party/parties';
 
 export class PreparationsSequenceProvider {
 
@@ -10,7 +10,7 @@ export class PreparationsSequenceProvider {
 
   private readonly WHAT = 'Przygotowuje się do akcji.';
 
-  get(parties: Party[], advantages: Advantage[]): SequenceElement {
+  get(parties: Parties, advantages: Advantage[]): SequenceElement {
     const test = this.preparationsTestProvider.get(
       'Obniżenie poziomu trudności skoku o jeden poziom wyzwania',
       'Zwiększenie poziomu napięcia o 1',

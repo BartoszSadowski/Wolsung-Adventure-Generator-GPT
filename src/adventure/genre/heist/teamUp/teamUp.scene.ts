@@ -1,9 +1,8 @@
 import { Scene } from '../../../scene/scene';
 import { PartyType } from '../../../party/partyType';
-import { Party } from '../../../party/party';
 import { LearnAboutGoalSequenceProvider } from './learnAboutGoal.sequence.provider';
 import { GoalDescriptionSequenceProvider } from './goalDescription.sequence.provider';
-import { PlaceOfActionParty } from '../../../party/placeOfAction/placeOfAction.party';
+import { Parties } from '../../../party/parties';
 
 export class TeamUpScene extends Scene {
   private readonly learnAboutProvider = new LearnAboutGoalSequenceProvider();
@@ -11,7 +10,7 @@ export class TeamUpScene extends Scene {
   private readonly goalDescriptionProvider = new GoalDescriptionSequenceProvider();
 
 
-  constructor(parties: Array<Party>) {
+  constructor(parties: Parties) {
     super(parties);
     this.addGoals();
     this.prepareSequence();
@@ -20,8 +19,7 @@ export class TeamUpScene extends Scene {
 
   private prepareWhere() {
     const location = this.locationBuilder.getLocation();
-    const placeOfAction = this.parties
-      .find(party => party.partyType === PartyType.PLACE_OF_ACTION) as unknown as PlaceOfActionParty;
+    const placeOfAction = this.parties.getPlaceOfAction();
 
     this.where = `${location} - ${placeOfAction.city} - ${placeOfAction.country}`;
   }
