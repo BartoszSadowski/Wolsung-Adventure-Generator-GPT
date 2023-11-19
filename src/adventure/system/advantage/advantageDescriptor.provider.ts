@@ -1,5 +1,5 @@
 import { Race } from '../../world/race';
-import { getRandomElement } from '../../../random/list.utils';
+import { getRandomElement } from '../../../utility/random/list.utils';
 
 export class AdvantageDescriptorModel {
   constructor(

@@ -3,6 +3,15 @@ import { Attribute } from '../resource/attribute';
 import { AdvantageType } from '../advantage/advantage';
 import { Wound } from '../resource/wound';
 
+enum ChanceName {
+  INFORMATION = 'Informacja',
+  LEAD = 'Przewaga',
+  REGAIN_ATTRIBUTE = 'Odzyskanie atrybutu',
+  REGENERATE_ATTRIBUTE = 'Regeneracja atrybutu',
+  TEMPORARY_ADVANTAGE = 'Tymczasowy atut',
+  HEAL_WOUND = 'Wyleczenie rany',
+}
+
 const effects = {
   information: () => 'Drużyna uzyskuje cenną informację',
   lead: () => 'Drużyna krzyżuje plany przeciwnika, obniż poziom napięcia',
@@ -17,6 +26,7 @@ export class ChanceSystem {
     return new CardEffect(
       color,
       description,
+      ChanceName.INFORMATION,
       effects.information(),
     );
   }
@@ -25,6 +35,7 @@ export class ChanceSystem {
     return new CardEffect(
       color,
       description,
+      ChanceName.LEAD,
       effects.lead(),
     );
   }
@@ -35,6 +46,7 @@ export class ChanceSystem {
     return new CardEffect(
       color,
       description,
+      ChanceName.REGAIN_ATTRIBUTE,
       effects.regainAttribute(attribute),
     );
   }
@@ -45,6 +57,7 @@ export class ChanceSystem {
     return new CardEffect(
       color,
       description,
+      ChanceName.REGENERATE_ATTRIBUTE,
       effects.regenerateAttribute(attribute),
     );
   }
@@ -55,6 +68,7 @@ export class ChanceSystem {
     return new CardEffect(
       color,
       description,
+      ChanceName.TEMPORARY_ADVANTAGE,
       effects.temporaryAdvantage(advantage),
     );
   }
@@ -65,6 +79,7 @@ export class ChanceSystem {
     return new CardEffect(
       color,
       description,
+      ChanceName.HEAL_WOUND,
       effects.healWound(wound),
     );
   }

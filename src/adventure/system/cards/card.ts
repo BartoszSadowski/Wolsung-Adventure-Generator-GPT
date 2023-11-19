@@ -13,6 +13,7 @@ export class CardEffect {
   constructor(
     public readonly color: Color,
     public readonly description: string,
+    public readonly name: string,
     public readonly result: string,
   ) {
   }

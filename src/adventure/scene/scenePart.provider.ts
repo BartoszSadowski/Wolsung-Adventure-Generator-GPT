@@ -1,8 +1,8 @@
 import { PartyType } from '../party/partyType';
 import { Party } from '../party/party';
-import { getRandomElement } from '../../random/list.utils';
+import { getRandomElement } from '../../utility/random/list.utils';
 import { Relation } from '../party/relation';
-import { isFalse } from '../../random/probability.utils';
+import { isFalse } from '../../utility/random/probability.utils';
 import { LocationBuilder } from '../location/locationBuilder';
 import { Tag } from '../../common/tag';
 import { Parties } from '../party/parties';

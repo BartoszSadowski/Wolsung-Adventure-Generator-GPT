@@ -1,9 +1,9 @@
 import { TestProvider } from '../../../../scene/test.provider';
 import { Parties } from '../../../../party/parties';
 import { Test } from '../../../../system/test/test';
-import { getRandomIntInRange } from '../../../../../random/number.utils';
+import { getRandomIntInRange } from '../../../../../utility/random/number.utils';
 import { CardEffect } from '../../../../system/cards/card';
-import { getRandomElement } from '../../../../../random/list.utils';
+import { getRandomElement } from '../../../../../utility/random/list.utils';
 import { CardSource } from '../../../../scene/card.source';
 import { FallbackCardSource } from '../../../../scene/fallback.card.source';
 import { Locaiton } from '../../../../location/locaiton';
@@ -19,13 +19,13 @@ export class BreakInTestProvider extends TestProvider {
       consequence,
       this.getChallengeRating(),
     )
-      .chances(this.getChances(parties, where))
-      .dangers(this.getDangers(parties, where))
+      .chances(this.getChances(where))
+      .dangers(this.getDangers(where))
       .build();
   }
 
-  private getDangers(parties: Parties, where: string): Array<CardEffect> {
-    const dangerSource = this.getDangerSource(parties, where);
+  private getDangers(where: string): Array<CardEffect> {
+    const dangerSource = this.getDangerSource(where);
 
     const spades = getRandomElement(dangerSource.getSpades());
     const hearts = getRandomElement(dangerSource.getHearts());
@@ -35,8 +35,8 @@ export class BreakInTestProvider extends TestProvider {
     return [spades, hearts, diamonds, clubs];
   }
 
-  private getChances(parties: Parties, where: string): Array<CardEffect> {
-    const chanceSource = this.getChanceSource(parties, where);
+  private getChances(where: string): Array<CardEffect> {
+    const chanceSource = this.getChanceSource(where);
 
     const spades = getRandomElement(chanceSource.getSpades());
     const hearts = getRandomElement(chanceSource.getHearts());
@@ -46,7 +46,7 @@ export class BreakInTestProvider extends TestProvider {
     return [spades, hearts, diamonds, clubs];
   }
 
-  private getChanceSource(parties: Parties, where: string): CardSource {
+  private getChanceSource(where: string): CardSource {
     switch (where) {
       case Locaiton.MUSEUM:
         return new MuseumTestChancesSource();
@@ -57,7 +57,7 @@ export class BreakInTestProvider extends TestProvider {
     }
   }
 
-  private getDangerSource(parties: Parties, where: string): CardSource {
+  private getDangerSource(where: string): CardSource {
     switch (where) {
       case Locaiton.MUSEUM:
         return new MuseumTestDangersSource();

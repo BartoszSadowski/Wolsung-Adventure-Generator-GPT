@@ -1,6 +1,6 @@
 import { PlaceOfActionParty } from './placeOfAction.party';
 import { worldMap } from '../../world/worldMap';
-import { getRandomElement } from '../../../random/list.utils';
+import { getRandomElement } from '../../../utility/random/list.utils';
 import { Country } from '../../world/country';
 
 export class PlaceOfActionProvider {

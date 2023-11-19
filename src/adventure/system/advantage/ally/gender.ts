@@ -1,4 +1,4 @@
-import { getRandomElement } from '../../../../random/list.utils';
+import { getRandomElement } from '../../../../utility/random/list.utils';
 
 export enum Gender {
   MALE = 'mężczyzna',

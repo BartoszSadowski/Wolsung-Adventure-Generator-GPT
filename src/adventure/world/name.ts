@@ -1,5 +1,5 @@
 import { Country } from './country';
-import { getRandomElement } from '../../random/list.utils';
+import { getRandomElement } from '../../utility/random/list.utils';
 import { Gender } from '../system/advantage/ally/gender';
 
 export const nameSet: Record<Gender, Record<Country, Array<string>>> = {

@@ -15,6 +15,7 @@ export class StealSequenceProvider {
     const test = this.stealTestProvider.get(
       `${treasure} zostaje wykradziony`,
       'Drużyna musi obejść się smakiem',
+      parties,
     );
 
     return {

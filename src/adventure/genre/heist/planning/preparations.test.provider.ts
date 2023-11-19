@@ -1,7 +1,7 @@
 import { TestProvider } from '../../../scene/test.provider';
-import { getRandomIntInRange } from '../../../../random/number.utils';
+import { getRandomIntInRange } from '../../../../utility/random/number.utils';
 import { PreparationsTestDangersSource } from './preparations.test.dangers.source';
-import { getRandomElement } from '../../../../random/list.utils';
+import { getRandomElement } from '../../../../utility/random/list.utils';
 import { PreparationsTestChancesSource } from './preparations.test.chances.source';
 import { CardEffect } from '../../../system/cards/card';
 import { Advantage } from '../../../system/advantage/advantage';

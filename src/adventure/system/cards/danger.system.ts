@@ -2,6 +2,13 @@ import { Attribute } from '../resource/attribute';
 import { AdvantageType } from '../advantage/advantage';
 import { CardEffect, Color, colorAdvantageMapping, colorAttributeMapping } from './card';
 
+enum DangerName {
+  LEAD = 'Przewaga',
+  LOSE_ATTRIBUTE = 'Utrata atrybutu',
+  LOSE_ADVANTAGE = 'Zgubienie atutu',
+  DESTROY_ADVANTAGE = 'Zniszczenie atutu',
+}
+
 const effects = {
   lead: () => 'Przeciwnik zyskuje przewagę, poziom napięcia wzrasta',
   loseAttribute: (attribute: Attribute) => `Jedna z postaci traci punkt atrybutu (${attribute})`,
@@ -15,6 +22,7 @@ export class DangerSystem {
     return new CardEffect(
       color,
       description,
+      DangerName.LEAD,
       effects.lead(),
     );
   }
@@ -25,6 +33,7 @@ export class DangerSystem {
     return new CardEffect(
       color,
       description,
+      DangerName.LOSE_ATTRIBUTE,
       effects.loseAttribute(attribute),
     );
   }
@@ -35,6 +44,7 @@ export class DangerSystem {
     return new CardEffect(
       color,
       description,
+      DangerName.LOSE_ADVANTAGE,
       effects.loseAdvantage(advantage),
     );
   }
@@ -45,6 +55,7 @@ export class DangerSystem {
     return new CardEffect(
       color,
       description,
+      DangerName.DESTROY_ADVANTAGE,
       effects.destroyAdvantage(advantage),
     );
   }

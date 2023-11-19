@@ -1,5 +1,5 @@
 import { Tag } from '../../../common/tag';
-import { getRandomElement, getRandomSubList } from '../../../random/list.utils';
+import { getRandomElement, getRandomSubList } from '../../../utility/random/list.utils';
 import { Party } from '../party';
 import { goalTags } from './goalTags';
 import { relationType } from '../relation';
