@@ -6,9 +6,10 @@ import { getRandomElement } from '../../../../random/list.utils';
 import { Advantage } from '../../../system/advantage/advantage';
 import { HeistAllyTemplateSource } from '../heist.allyTemplate.source';
 import { Parties } from '../../../party/parties';
+import { CardSource } from '../../../scene/card.source';
 
 
-export class PreparationsTestChancesSource {
+export class PreparationsTestChancesSource implements CardSource {
   private static allyProvider = new AllyProvider();
 
 

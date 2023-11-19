@@ -45,7 +45,7 @@ export class DangerSystem {
     return new CardEffect(
       color,
       description,
-      effects.loseAdvantage(advantage),
+      effects.destroyAdvantage(advantage),
     );
   }
 }

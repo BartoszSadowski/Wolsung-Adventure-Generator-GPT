@@ -23,11 +23,6 @@ export class PlanningScene extends Scene {
   }
 
   private prepareSequence() {
-    this.prepare();
-  }
-
-  private prepare() {
     this.sequence.push(this.preparationsProvider.get(this.parties, this.advantages));
   }
-
 }

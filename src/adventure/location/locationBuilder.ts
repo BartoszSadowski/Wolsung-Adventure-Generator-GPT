@@ -1,6 +1,7 @@
 import { Tag } from '../../common/tag';
 import { getRandomElement } from '../../random/list.utils';
 import { locationTags } from './locationTags';
+import { Locaiton } from './locaiton';
 
 interface PossibleLocation {
   value: string,
@@ -10,13 +11,13 @@ interface PossibleLocation {
 export class LocationBuilder {
   private static possibleLocations: Array<PossibleLocation> = [
     {
-      value: 'Muzeum',
+      value: Locaiton.MUSEUM,
       matchingTags: [
         locationTags.MUSEUM,
       ],
     },
     {
-      value: 'Klub Dżentelmenów',
+      value: Locaiton.GENTELMENT_CLUB,
       matchingTags: [
         locationTags.PEACEFUL,
         locationTags.COFFEE_TIME,
@@ -24,10 +25,16 @@ export class LocationBuilder {
       ],
     },
     {
-      value: 'Miasto',
+      value: Locaiton.CITY,
       matchingTags: [
         locationTags.CITY,
         locationTags.BROAD,
+      ],
+    },
+    {
+      value: Locaiton.OLD_HOUSE,
+      matchingTags: [
+        locationTags.PRIVATE_COLLECTION,
       ],
     },
   ];

@@ -9,7 +9,7 @@ export class GoalDescriptionSequenceProvider {
   get(parties: Parties) {
     return {
       who: this.getGoal(parties),
-      what: 'zostaje opisany',
+      what: 'zostaje wstępnie opisany',
     };
   }
 

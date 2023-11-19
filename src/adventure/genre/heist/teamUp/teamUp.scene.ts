@@ -9,7 +9,6 @@ export class TeamUpScene extends Scene {
 
   private readonly goalDescriptionProvider = new GoalDescriptionSequenceProvider();
 
-
   constructor(parties: Parties) {
     super(parties);
     this.addGoals();
@@ -30,15 +29,7 @@ export class TeamUpScene extends Scene {
   }
 
   private prepareSequence() {
-    this.learnAboutGoal();
-    this.goalDescription();
-  }
-
-  private learnAboutGoal() {
     this.sequence.push(this.learnAboutProvider.get(this.parties, this.locationBuilder));
-  }
-
-  private goalDescription() {
     this.sequence.push(this.goalDescriptionProvider.get(this.parties));
   }
 }

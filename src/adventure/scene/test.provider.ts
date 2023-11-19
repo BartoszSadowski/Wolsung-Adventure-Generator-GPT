@@ -1,5 +1,5 @@
-import { Test } from './test';
-import { TestSystem } from './test.system';
+import { Test } from '../system/test/test';
+import { TestSystem } from '../system/test/test.system';
 
 export abstract class TestProvider {
   protected getTestBuilder(result: string, consequence: string, rating: number) {

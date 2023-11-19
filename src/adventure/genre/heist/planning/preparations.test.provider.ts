@@ -1,5 +1,4 @@
-import { TestProvider } from '../../../system/test/test.provider';
-import { Test } from '../../../system/test/test';
+import { TestProvider } from '../../../scene/test.provider';
 import { getRandomIntInRange } from '../../../../random/number.utils';
 import { PreparationsTestDangersSource } from './preparations.test.dangers.source';
 import { getRandomElement } from '../../../../random/list.utils';
@@ -7,6 +6,7 @@ import { PreparationsTestChancesSource } from './preparations.test.chances.sourc
 import { CardEffect } from '../../../system/cards/card';
 import { Advantage } from '../../../system/advantage/advantage';
 import { Parties } from '../../../party/parties';
+import { Test } from '../../../system/test/test';
 
 export class PreparationsTestProvider extends TestProvider {
   get(result: string, consequence: string, parties: Parties, advantages: Array<Advantage>): Test {
@@ -21,10 +21,12 @@ export class PreparationsTestProvider extends TestProvider {
   }
 
   private getDangers(): Array<CardEffect> {
-    const spades = getRandomElement(PreparationsTestDangersSource.getSpades());
-    const hearts = getRandomElement(PreparationsTestDangersSource.getHearts());
-    const diamonds = getRandomElement(PreparationsTestDangersSource.getDiamonds());
-    const clubs = getRandomElement(PreparationsTestDangersSource.getClubs());
+    const dangerSource = new PreparationsTestDangersSource();
+
+    const spades = getRandomElement(dangerSource.getSpades());
+    const hearts = getRandomElement(dangerSource.getHearts());
+    const diamonds = getRandomElement(dangerSource.getDiamonds());
+    const clubs = getRandomElement(dangerSource.getClubs());
 
     return [spades, hearts, diamonds, clubs];
   }
