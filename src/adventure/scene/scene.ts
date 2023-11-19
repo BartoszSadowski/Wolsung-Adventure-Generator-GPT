@@ -6,6 +6,7 @@ import { Parties } from '../party/parties';
 
 
 export interface SequenceElement {
+  conditional?: string;
   who?: string;
   what?: string;
   with?: string;
