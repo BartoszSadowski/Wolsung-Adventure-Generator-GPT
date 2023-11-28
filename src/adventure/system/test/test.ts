@@ -9,6 +9,8 @@ export class Test {
 
     private _toughness: number = 0;
 
+    private _modifiers: Array<string> = [];
+
     private _cards: number = 0;
 
     private _aces: Array<string> = [];
@@ -34,6 +36,11 @@ export class Test {
 
     public toughness(value: number) {
       this._toughness = value;
+      return this;
+    }
+
+    public modifiers(value: Array<string>) {
+      this._modifiers = value;
       return this;
     }
 
@@ -82,6 +89,7 @@ export class Test {
       return new Test(
         this._challengeRating,
         this._toughness,
+        this._modifiers,
         this._cards,
         this._result,
         this._consequence,
@@ -97,6 +105,7 @@ export class Test {
   constructor(
     private readonly challengeRating: number,
     private readonly toughness: number,
+    private readonly modifiers: Array<string>,
     private readonly cards: number,
     private readonly result: string,
     private readonly consequence: string,

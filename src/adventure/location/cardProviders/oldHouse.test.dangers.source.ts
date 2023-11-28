@@ -1,6 +1,6 @@
-import { CardSource } from '../../../../scene/card.source';
-import { CardEffect, Color } from '../../../../system/cards/card';
-import { DangerSystem } from '../../../../system/cards/danger.system';
+import { CardSource } from '../../scene/card.source';
+import { CardEffect, Color } from '../../system/cards/card';
+import { DangerSystem } from '../../system/cards/danger.system';
 
 export class OldHouseTestDangersSource implements CardSource {
   getClubs(): Array<CardEffect> {

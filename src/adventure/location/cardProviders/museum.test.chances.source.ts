@@ -1,6 +1,6 @@
-import { CardSource } from '../../../../scene/card.source';
-import { CardEffect, Color } from '../../../../system/cards/card';
-import { ChanceSystem } from '../../../../system/cards/chance.system';
+import { CardSource } from '../../scene/card.source';
+import { CardEffect, Color } from '../../system/cards/card';
+import { ChanceSystem } from '../../system/cards/chance.system';
 
 export class MuseumTestChancesSource implements CardSource {
   getClubs(): Array<CardEffect> {

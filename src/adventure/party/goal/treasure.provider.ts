@@ -1,4 +1,4 @@
-import { Tag } from '../../../common/tag';
+import { Tag } from '../../common/tag';
 import { getRandomElement, getRandomSubList } from '../../../utility/random/list.utils';
 import { Party } from '../party';
 import { goalTags } from './goalTags';

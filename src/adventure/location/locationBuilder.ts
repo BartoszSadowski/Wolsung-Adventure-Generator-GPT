@@ -1,4 +1,4 @@
-import { Tag } from '../../common/tag';
+import { Tag } from '../common/tag';
 import { getRandomElement } from '../../utility/random/list.utils';
 import { locationTags } from './locationTags';
 import { Locaiton } from './locaiton';

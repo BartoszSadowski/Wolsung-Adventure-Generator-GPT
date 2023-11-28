@@ -1,5 +1,5 @@
 import { Scene } from '../../../scene/scene';
-import { PartyType } from '../../../party/partyType';
+import { PartyType, partyTypeTranslations } from '../../../party/partyType';
 import { LearnAboutGoalSequenceProvider } from './learnAboutGoal.sequence.provider';
 import { GoalDescriptionSequenceProvider } from './goalDescription.sequence.provider';
 import { Parties } from '../../../party/parties';
@@ -31,5 +31,9 @@ export class TeamUpScene extends Scene {
   private prepareSequence() {
     this.sequence.push(this.learnAboutProvider.get(this.parties, this.locationBuilder));
     this.sequence.push(this.goalDescriptionProvider.get(this.parties));
+    this.sequence.push({
+      who: partyTypeTranslations[PartyType.GM],
+      what: 'Przedstawia startowy poziom napięcia: 1',
+    });
   }
 }

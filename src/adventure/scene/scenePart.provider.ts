@@ -4,7 +4,7 @@ import { getRandomElement } from '../../utility/random/list.utils';
 import { Relation } from '../party/relation';
 import { isFalse } from '../../utility/random/probability.utils';
 import { LocationBuilder } from '../location/locationBuilder';
-import { Tag } from '../../common/tag';
+import { Tag } from '../common/tag';
 import { Parties } from '../party/parties';
 
 export interface AffectedParty {
