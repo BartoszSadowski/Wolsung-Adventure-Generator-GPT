@@ -14,6 +14,6 @@ export class AdventureProvider {
     const structure = genre.getStructure();
     console.log('parties:', parties.toJson());
 
-    return structure.toJson();
+    return structure;
   }
 }
