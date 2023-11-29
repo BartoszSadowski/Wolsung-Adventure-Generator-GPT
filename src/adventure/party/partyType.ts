@@ -13,3 +13,4 @@ export const partyTypeTranslations: Record<PartyType, string> = {
   team: 'drużyna',
   [PartyType.PLACE_OF_ACTION]: 'miejsce akcji',
 };
+

@@ -1,5 +1,33 @@
 <!DOCTYPE html>
 <html lang="pl">
 <body>
+<h1>Wolsung</h1>
+<article>
+    <h2>{{title}}</h2>
+
+    <section>
+        <h3></h3>
+        <p>Wstęp (do napisania)</p>
+        <!-- TODO Zawrzeć informacje o tym że przygoda jest generowana, oraz bardzo pokrótce czym jest Wolsung -->
+        <p></p>
+    </section>
+
+    <section>
+        <h3>O co chodzi w przygodzie?</h3>
+        <p>{{summary}}</p>
+    </section>
+
+    {{#each acts}}
+        <section>
+            <h3>{{title}}</h3>
+            {{#each goals}}
+                <p>
+                    <strong>{{key}}</strong>
+                    {{value}}
+                </p>
+            {{/each}}
+        </section>
+    {{/each}}
+</article>
 </body>
 </html>
