@@ -1,7 +1,7 @@
 import { InflectionProvider } from './inflection.provider';
 
 export class MockInflectionProvider implements InflectionProvider {
-  correct(value: string): string {
+  async correct(value: string): Promise<string> {
     return value;
   }
 }

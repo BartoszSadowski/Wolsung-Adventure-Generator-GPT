@@ -1,3 +1,3 @@
 export interface InflectionProvider {
-  correct(value: string): string;
+  correct(value: string): Promise<string>;
 }

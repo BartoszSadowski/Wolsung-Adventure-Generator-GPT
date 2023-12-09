@@ -3,9 +3,6 @@ import { Newable } from '../../../utility/type/newable';
 import { MockTitleProvider } from './title/mock.title.provider';
 import { GptTitleProvider } from './title/gpt.title.provider';
 import { TitleProvider } from './title/title.provider';
-import { SummaryProvider } from './summary/summary.provider';
-import { GptSummaryProvider } from './summary/gpt.summary.provider';
-import { MockSummaryProvider } from './summary/mock.summary.provider';
 import { ActsProvider } from './act/acts.provider';
 import { ActTitleProvider } from './act/title/act.title.provider';
 import { GptActTitleProvider } from './act/title/gpt.act.title.provider';
@@ -21,14 +18,6 @@ export class LanguageProcessorProvider {
       LanguageProcessorConfigurationKeys.TITLE,
       GptTitleProvider,
       MockTitleProvider,
-    );
-  }
-
-  static getSummaryProvider() {
-    return this.getProvider<SummaryProvider>(
-      LanguageProcessorConfigurationKeys.SUMMARY,
-      GptSummaryProvider,
-      MockSummaryProvider,
     );
   }
 

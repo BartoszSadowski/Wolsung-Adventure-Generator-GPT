@@ -11,15 +11,14 @@ app.set('view engine', 'hbs');
 app.set('views', path.join('src', 'views'));
 
 app.get('/raw', (req, res) => {
-  console.log('******************************************');
   const adventure = provider.generate();
 
   res.send(adventure.toJson());
 });
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   const adventure = provider.generate();
-  const view = AdventureView.fromAdventure(adventure);
+  const view = await AdventureView.fromAdventure(adventure);
 
   res.render('adventure', view);
 });

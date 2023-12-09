@@ -9,11 +9,11 @@ export class GoalsProvider {
   ) {
   }
 
-  get(scene: Scene): Array<Goal> {
-    return Object.entries(scene.goals)
-      .map(([key, value]: [string, string]) => new Goal(
+  get(scene: Scene): Promise<Array<Goal>> {
+    return Promise.all(Object.entries(scene.goals)
+      .map(async ([key, value]) => new Goal(
         getPartyTypeTranslations(key),
-        this.inflecionProvider.correct(value.toLowerCase()),
-      ));
+        await this.inflecionProvider.correct(value.toLowerCase()),
+      )));
   }
 }

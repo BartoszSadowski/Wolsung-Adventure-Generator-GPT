@@ -11,9 +11,6 @@ export class AdventureProvider {
     ]);
 
     const genre = GenreProvider.provideRandom(parties);
-    const structure = genre.getStructure();
-    console.log('parties:', parties.toJson());
-
-    return structure;
+    return genre.getStructure();
   }
 }
