@@ -2,12 +2,15 @@ import { Adventure } from '../../../adventure';
 import { Act } from './act';
 import { ActTitleProvider } from './title/act.title.provider';
 import { GoalsProvider } from './goal/goals.provider';
+import { SectionsProvider } from './sections/sections.provider';
+import { AdvantageProvider } from './advantage/advantage.provider';
 
 export class ActsProvider {
-
   constructor(
-    private actTitleProvider: ActTitleProvider,
-    private goalProvider: GoalsProvider,
+    private readonly actTitleProvider: ActTitleProvider,
+    private readonly goalProvider: GoalsProvider,
+    private readonly sectionsProvider: SectionsProvider,
+    private readonly advantagesProvider: AdvantageProvider,
   ) {
   }
 
@@ -16,6 +19,8 @@ export class ActsProvider {
       .map(async ([key, scene]) => new Act(
         this.actTitleProvider.get(key, scene),
         await this.goalProvider.get(scene),
+        await this.sectionsProvider.get(scene),
+        await this.advantagesProvider.get(scene),
       )));
   }
 }

@@ -1,0 +1,25 @@
+<section>
+    <article>
+        <h3>{{title}}</h3>
+        {{#each goals}}
+            <p>
+                <strong>{{key}}</strong>
+                {{value}}
+            </p>
+        {{/each}}
+
+        {{#each sections}}
+            <p>{{this}}</p>
+        {{/each}}
+    </article>
+    {{#each advantages}}
+        <aside style="border: black solid 1px; padding: 5px;">
+            <p>{{description}}</p>
+            <ul>
+                {{#each traits}}
+                    <li><b>{{name}}</b> {{keyword}}  {{description}} ({{frequency}})</li>
+                {{/each}}
+            </ul>
+        </aside>
+    {{/each}}
+</section>

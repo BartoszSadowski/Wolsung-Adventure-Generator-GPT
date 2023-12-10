@@ -13,15 +13,7 @@
     </section>
 
     {{#each acts}}
-        <section>
-            <h3>{{title}}</h3>
-            {{#each goals}}
-                <p>
-                    <strong>{{key}}</strong>
-                    {{value}}
-                </p>
-            {{/each}}
-        </section>
+        {{> act }}
     {{/each}}
 </article>
 </body>

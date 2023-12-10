@@ -1,7 +1,7 @@
 import { Trait } from './trait/trait';
 
 export enum AdvantageType {
-  STATUS = 'STATUS',
+  STATUS = 'Status',
   ALLY = 'Sojusznik',
   GADGET = 'Gadżet',
   MAGIC = 'Magia',
@@ -14,7 +14,7 @@ export abstract class Advantage {
   constructor(
     public readonly name: string,
     public readonly description: string,
-    public readonly trait: Array<Trait>,
+    public readonly traits: Array<Trait>,
   ) {
   }
 

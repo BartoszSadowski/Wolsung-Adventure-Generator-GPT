@@ -11,6 +11,12 @@ import { InflectionProvider } from './inflection/inflection.provider';
 import { GptInflectionProvider } from './inflection/gpt.inflection.provider';
 import { MockInflectionProvider } from './inflection/mock.inflection.provider';
 import { GoalsProvider } from './act/goal/goals.provider';
+import { SectionsProvider } from './act/sections/sections.provider';
+import { GptSectionsProvider } from './act/sections/gpt.sections.provider';
+import { MockSectionsProvider } from './act/sections/mock.sections.provider';
+import { AdvantageProvider } from './act/advantage/advantage.provider';
+import { GptAdvantageProvider } from './act/advantage/gpt.advantage.provider';
+import { MockAdvantageProvider } from './act/advantage/mock.advantage.provider';
 
 export class LanguageProcessorProvider {
   static getTitleProvider() {
@@ -27,6 +33,8 @@ export class LanguageProcessorProvider {
     return new ActsProvider(
       this.getActTitleProvider(),
       goalsProvider,
+      this.getSectionsProvider(),
+      this.getAdvantagesProvider(),
     );
   }
 
@@ -46,10 +54,27 @@ export class LanguageProcessorProvider {
     );
   }
 
+  static getSectionsProvider() {
+    return this.getProvider<SectionsProvider>(
+      LanguageProcessorConfigurationKeys.SECTIONS,
+      GptSectionsProvider,
+      MockSectionsProvider,
+    );
+  }
+
+  static getAdvantagesProvider() {
+    return this.getProvider<AdvantageProvider>(
+      LanguageProcessorConfigurationKeys.ADVANTAGES,
+      GptAdvantageProvider,
+      MockAdvantageProvider,
+    );
+  }
+
   private static getProvider<T>(type: LanguageProcessorConfigurationKeys, actual: Newable<T>, mock: Newable<T>) {
     if (languageProcessorConfiguration[type]) {
       return new actual();
     }
     return new mock();
   }
+
 }
