@@ -12,11 +12,16 @@ import { GptInflectionProvider } from './inflection/gpt.inflection.provider';
 import { MockInflectionProvider } from './inflection/mock.inflection.provider';
 import { GoalsProvider } from './act/goal/goals.provider';
 import { SectionsProvider } from './act/sections/sections.provider';
-import { GptSectionsProvider } from './act/sections/gpt.sections.provider';
-import { MockSectionsProvider } from './act/sections/mock.sections.provider';
 import { AdvantageProvider } from './act/advantage/advantage.provider';
 import { GptAdvantageProvider } from './act/advantage/gpt.advantage.provider';
 import { MockAdvantageProvider } from './act/advantage/mock.advantage.provider';
+import {
+  GptPlaceOfActionProvider,
+  MockPlaceOfActionProvider,
+  PlaceOfActionProvider,
+} from './act/sections/placeOfAction.provider';
+import { GptStepProvider, MockStepProvider, StepProvider } from './act/sections/step.provider';
+import { GptTestProvider, MockTestProvider, TestProvider } from './act/sections/test.provider';
 
 export class LanguageProcessorProvider {
   static getTitleProvider() {
@@ -54,14 +59,6 @@ export class LanguageProcessorProvider {
     );
   }
 
-  static getSectionsProvider() {
-    return this.getProvider<SectionsProvider>(
-      LanguageProcessorConfigurationKeys.SECTIONS,
-      GptSectionsProvider,
-      MockSectionsProvider,
-    );
-  }
-
   static getAdvantagesProvider() {
     return this.getProvider<AdvantageProvider>(
       LanguageProcessorConfigurationKeys.ADVANTAGES,
@@ -70,7 +67,43 @@ export class LanguageProcessorProvider {
     );
   }
 
-  private static getProvider<T>(type: LanguageProcessorConfigurationKeys, actual: Newable<T>, mock: Newable<T>) {
+  static getSectionsProvider() {
+    return new SectionsProvider(
+      this.getPlaceOfActionProvider(),
+      this.getStepProvider(),
+      this.getTestProvider(),
+    );
+  }
+
+
+  private static getPlaceOfActionProvider() {
+    return this.getProvider<PlaceOfActionProvider>(
+      LanguageProcessorConfigurationKeys.PLACE_OF_ACTION_DESCRIPTION,
+      GptPlaceOfActionProvider,
+      MockPlaceOfActionProvider,
+    );
+  }
+
+  private static getStepProvider() {
+    return this.getProvider<StepProvider>(
+      LanguageProcessorConfigurationKeys.STEP,
+      GptStepProvider,
+      MockStepProvider,
+    );
+  }
+
+  private static getTestProvider() {
+    return this.getProvider<TestProvider>(
+      LanguageProcessorConfigurationKeys.TEST,
+      GptTestProvider,
+      MockTestProvider,
+    );
+  }
+
+  private static getProvider<T>(
+    type: LanguageProcessorConfigurationKeys,
+    actual: Newable<T>, mock: Newable<T>,
+  ) {
     if (languageProcessorConfiguration[type]) {
       return new actual();
     }
