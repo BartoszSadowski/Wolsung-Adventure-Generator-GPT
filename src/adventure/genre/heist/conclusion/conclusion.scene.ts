@@ -6,7 +6,7 @@ export class ConclusionScene extends Scene {
   constructor(parties: Parties) {
     super(parties);
     this.addGoal(PartyType.GM, 'Wyciszyć graczy, dać nacieszyć się zwycięstwem');
-    this.where = 'Gdzieś w zacisznym miejscu';
+    this.placeOfAction.name = 'Gdzieś w bezpiecznym miejscu';
     this.prepareSequence();
   }
 

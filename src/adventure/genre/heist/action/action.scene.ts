@@ -29,11 +29,11 @@ export class ActionScene extends Scene {
     const locationTags: Array<string> = this.parties.getGoalParty().properties.location || [];
     locationTags.forEach(tag => this.locationBuilder.addTag(tag));
 
-    this.where = this.locationBuilder.getLocation();
+    this.placeOfAction.name = this.locationBuilder.getLocation();
   }
 
   private prepareSequence() {
-    this.sequence.push(this.breakInSequenceProvider.get(this.parties, this.where));
+    this.sequence.push(this.breakInSequenceProvider.get(this.parties, this.placeOfAction));
     this.sequence.push(this.stealSequenceProvider.get(this.parties));
   }
 }

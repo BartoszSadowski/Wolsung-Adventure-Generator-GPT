@@ -11,21 +11,22 @@ import { MuseumTestChancesSource } from '../../../../location/cardProviders/muse
 import { OldHouseTestChancesSource } from '../../../../location/cardProviders/oldHouse.test.chances.source';
 import { OldHouseTestDangersSource } from '../../../../location/cardProviders/oldHouse.test.dangers.source';
 import { MuseumTestDangersSource } from '../../../../location/cardProviders/museum.test.dangers.source';
+import { PlaceOfAction } from '../../../../scene/placeOfAction';
 
 export class BreakInTestProvider extends TestProvider {
-  get(result: string, consequence: string, parties: Parties, where: string): Test {
+  get(result: string, consequence: string, parties: Parties, placeOfAction: PlaceOfAction): Test {
     return super.getTestBuilder(
       result,
       consequence,
       this.getChallengeRating(),
     )
-      .chances(this.getChances(where))
-      .dangers(this.getDangers(where))
+      .chances(this.getChances(placeOfAction))
+      .dangers(this.getDangers(placeOfAction))
       .build();
   }
 
-  private getDangers(where: string): Array<CardEffect> {
-    const dangerSource = this.getDangerSource(where);
+  private getDangers(placeOfAction: PlaceOfAction): Array<CardEffect> {
+    const dangerSource = this.getDangerSource(placeOfAction);
 
     const spades = getRandomElement(dangerSource.getSpades());
     const hearts = getRandomElement(dangerSource.getHearts());
@@ -35,8 +36,8 @@ export class BreakInTestProvider extends TestProvider {
     return [spades, hearts, diamonds, clubs];
   }
 
-  private getChances(where: string): Array<CardEffect> {
-    const chanceSource = this.getChanceSource(where);
+  private getChances(placeOfAction: PlaceOfAction): Array<CardEffect> {
+    const chanceSource = this.getChanceSource(placeOfAction);
 
     const spades = getRandomElement(chanceSource.getSpades());
     const hearts = getRandomElement(chanceSource.getHearts());
@@ -46,8 +47,8 @@ export class BreakInTestProvider extends TestProvider {
     return [spades, hearts, diamonds, clubs];
   }
 
-  private getChanceSource(where: string): CardSource {
-    switch (where) {
+  private getChanceSource(placeOfAction: PlaceOfAction): CardSource {
+    switch (placeOfAction.name) {
       case Locaiton.MUSEUM:
         return new MuseumTestChancesSource();
       case Locaiton.OLD_HOUSE:
@@ -57,8 +58,8 @@ export class BreakInTestProvider extends TestProvider {
     }
   }
 
-  private getDangerSource(where: string): CardSource {
-    switch (where) {
+  private getDangerSource(placeOfAction: PlaceOfAction): CardSource {
+    switch (placeOfAction.name) {
       case Locaiton.MUSEUM:
         return new MuseumTestDangersSource();
       case Locaiton.OLD_HOUSE:

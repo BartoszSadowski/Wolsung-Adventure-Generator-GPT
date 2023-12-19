@@ -3,6 +3,7 @@ import { LocationBuilder } from '../location/locationBuilder';
 import { Test } from '../system/test/test';
 import { Advantage } from '../system/advantage/advantage';
 import { Parties } from '../party/parties';
+import { PlaceOfAction } from './placeOfAction';
 
 
 export interface SequenceElement {
@@ -18,7 +19,7 @@ export class Scene {
 
   locationBuilder = new LocationBuilder();
 
-  where = '';
+  placeOfAction = new PlaceOfAction();
 
   sequence: Array<SequenceElement> = [];
 
@@ -30,7 +31,7 @@ export class Scene {
   toJson() {
     return {
       goals: this.goals,
-      where: this.where,
+      where: this.placeOfAction,
       what: this.sequence,
       advantages: this.advantages,
     };

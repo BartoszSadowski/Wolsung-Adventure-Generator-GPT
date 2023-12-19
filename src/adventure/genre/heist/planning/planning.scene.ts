@@ -19,7 +19,8 @@ export class PlanningScene extends Scene {
   }
 
   private prepareWhere() {
-    this.where = this.parties.getPlaceOfAction().city;
+    this.placeOfAction.name = 'miasto';
+    this.placeOfAction.city = this.parties.getPlaceOfAction().city;
   }
 
   private prepareSequence() {

@@ -10,22 +10,23 @@ import { OldHouseTestDangersSource } from '../../../../location/cardProviders/ol
 import { FallbackCardSource } from '../../../../scene/fallback.card.source';
 import { MuseumTestChancesSource } from '../../../../location/cardProviders/museum.test.chances.source';
 import { OldHouseTestChancesSource } from '../../../../location/cardProviders/oldHouse.test.chances.source';
+import { PlaceOfAction } from '../../../../scene/placeOfAction';
 
 export class SneakOutTestProvider extends TestProvider {
-  get(result: string, consequence: string, where: string): Test {
+  get(result: string, consequence: string, placeOfAction: PlaceOfAction): Test {
     return super.getTestBuilder(
       result,
       consequence,
       this.getChallengeRating(),
     )
       .modifiers(['Za każdy punkt napięcia trudność testu zwiększona o 5.'])
-      .chances(this.getChances(where))
-      .dangers(this.getDangers(where))
+      .chances(this.getChances(placeOfAction))
+      .dangers(this.getDangers(placeOfAction))
       .build();
   }
 
-  private getChances(where: string): Array<CardEffect> {
-    const chanceSource = this.getChanceSource(where);
+  private getChances(placeOfAction: PlaceOfAction): Array<CardEffect> {
+    const chanceSource = this.getChanceSource(placeOfAction);
 
     const spades = getRandomElement(chanceSource.getSpades());
     const hearts = getRandomElement(chanceSource.getHearts());
@@ -35,8 +36,8 @@ export class SneakOutTestProvider extends TestProvider {
     return [spades, hearts, diamonds, clubs];
   }
 
-  private getDangers(where: string): Array<CardEffect> {
-    const dangerSource = this.getDangerSource(where);
+  private getDangers(placeOfAction: PlaceOfAction): Array<CardEffect> {
+    const dangerSource = this.getDangerSource(placeOfAction);
 
     const spades = getRandomElement(dangerSource.getSpades());
     const hearts = getRandomElement(dangerSource.getHearts());
@@ -46,8 +47,8 @@ export class SneakOutTestProvider extends TestProvider {
     return [spades, hearts, diamonds, clubs];
   }
 
-  private getChanceSource(where: string): CardSource {
-    switch (where) {
+  private getChanceSource(placeOfAction: PlaceOfAction): CardSource {
+    switch (placeOfAction.name) {
       case Locaiton.MUSEUM:
         return new MuseumTestChancesSource();
       case Locaiton.OLD_HOUSE:
@@ -57,8 +58,8 @@ export class SneakOutTestProvider extends TestProvider {
     }
   }
 
-  private getDangerSource(where: string): CardSource {
-    switch (where) {
+  private getDangerSource(placeOfAction: PlaceOfAction): CardSource {
+    switch (placeOfAction.name) {
       case Locaiton.MUSEUM:
         return new MuseumTestDangersSource();
       case Locaiton.OLD_HOUSE:

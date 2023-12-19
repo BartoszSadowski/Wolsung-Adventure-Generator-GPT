@@ -26,11 +26,11 @@ export class ComplicationScene extends Scene {
     const locationTags: Array<string> = this.parties.getGoalParty().properties.location || [];
     locationTags.forEach(tag => this.locationBuilder.addTag(tag));
 
-    this.where = this.locationBuilder.getLocation();
+    this.placeOfAction.name = this.locationBuilder.getLocation();
   }
 
   private prepareSequence() {
-    this.sequence.push(this.sneakOutSequenceProvider.get(this.where));
+    this.sequence.push(this.sneakOutSequenceProvider.get(this.placeOfAction));
     this.sequence.push(this.chaseSequenceProvider.get(this.parties));
   }
 }

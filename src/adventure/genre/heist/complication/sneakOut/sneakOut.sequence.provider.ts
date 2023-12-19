@@ -1,15 +1,16 @@
 import { SequenceElement } from '../../../../scene/scene';
 import { PartyType, partyTypeTranslations } from '../../../../party/partyType';
 import { SneakOutTestProvider } from './sneakOut.test.provider';
+import { PlaceOfAction } from '../../../../scene/placeOfAction';
 
 export class SneakOutSequenceProvider {
   private readonly sneakOutTestProvider = new SneakOutTestProvider();
 
-  get(where: string): SequenceElement {
+  get(placeOfAction: PlaceOfAction): SequenceElement {
     const test = this.sneakOutTestProvider.get(
       'Bezpieczne opuszczenie miejsca zdarzenia',
       'Wykrycie: Rozpoczyna się pościg',
-      where,
+      placeOfAction,
     );
 
     return {

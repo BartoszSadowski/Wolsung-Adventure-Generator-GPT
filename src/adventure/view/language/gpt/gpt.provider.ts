@@ -4,6 +4,7 @@ import OpenAI from 'openai';
 enum SetupName {
   GENERATIVE,
   INFLECITON,
+  DESCRIPTION,
 }
 
 export class GptProvider {
@@ -26,6 +27,13 @@ export class GptProvider {
         'Do not change subject of sentence. ' +
         'Start sentences with capital letter and finish with a dot.',
     },
+    [SetupName.DESCRIPTION]: {
+      role: 'system',
+      content: 'You are writing parts of RPG adventure documents. ' +
+        'You are responding with paragraphs regarding assigned topic. ' +
+        'Do not use to much invention, if something is vague keep it that way.' +
+        'Do not add information about step of adventure',
+    },
   };
 
 
@@ -35,6 +43,10 @@ export class GptProvider {
 
   static getInflectionGpt() {
     return this.getGpt(SetupName.INFLECITON);
+  }
+
+  static getDescriptionGpt() {
+    return this.getGpt(SetupName.DESCRIPTION);
   }
 
   private static getGpt(name: SetupName) {

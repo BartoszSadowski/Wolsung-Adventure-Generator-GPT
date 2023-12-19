@@ -18,9 +18,11 @@ export class TeamUpScene extends Scene {
 
   private prepareWhere() {
     const location = this.locationBuilder.getLocation();
-    const placeOfAction = this.parties.getPlaceOfAction();
+    const { country, city } = this.parties.getPlaceOfAction();
 
-    this.where = `${location} - ${placeOfAction.city} - ${placeOfAction.country}`;
+    this.placeOfAction.name = location;
+    this.placeOfAction.city = city;
+    this.placeOfAction.country = country;
   }
 
   private addGoals() {
