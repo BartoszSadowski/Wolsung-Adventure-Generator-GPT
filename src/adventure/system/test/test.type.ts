@@ -1,4 +1,4 @@
 export enum TestType {
   TEST = 'test',
-  CONFRONTATION = 'confronation',
+  CONFRONTATION = 'konfrontacja',
 }

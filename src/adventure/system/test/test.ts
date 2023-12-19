@@ -103,17 +103,17 @@ export class Test {
   };
 
   constructor(
-    private readonly challengeRating: number,
-    private readonly toughness: number,
-    private readonly modifiers: Array<string>,
-    private readonly cards: number,
-    private readonly result: string,
-    private readonly consequence: string,
-    private readonly aces: Array<string>,
-    private readonly chances: Array<CardEffect>,
-    private readonly dangers: Array<CardEffect>,
-    private readonly abilities: Array<Ability>,
-    private readonly testType: TestType,
+    public readonly challengeRating: number,
+    public readonly toughness: number,
+    public readonly modifiers: Array<string>,
+    public readonly cards: number,
+    public readonly result: string,
+    public readonly consequence: string,
+    public readonly aces: Array<string>,
+    public readonly chances: Array<CardEffect>,
+    public readonly dangers: Array<CardEffect>,
+    public readonly abilities: Array<Ability>,
+    public readonly testType: TestType,
   ) {
   }
 

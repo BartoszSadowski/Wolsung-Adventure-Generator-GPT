@@ -21,7 +21,7 @@ import {
   PlaceOfActionProvider,
 } from './act/sections/placeOfAction.provider';
 import { GptStepProvider, MockStepProvider, StepProvider } from './act/sections/step.provider';
-import { GptTestProvider, MockTestProvider, TestProvider } from './act/sections/test.provider';
+import { TestProvider } from './act/sections/test.provider';
 
 export class LanguageProcessorProvider {
   static getTitleProvider() {
@@ -93,11 +93,7 @@ export class LanguageProcessorProvider {
   }
 
   private static getTestProvider() {
-    return this.getProvider<TestProvider>(
-      LanguageProcessorConfigurationKeys.TEST,
-      GptTestProvider,
-      MockTestProvider,
-    );
+    return new TestProvider(this.getInflectionProvider());
   }
 
   private static getProvider<T>(

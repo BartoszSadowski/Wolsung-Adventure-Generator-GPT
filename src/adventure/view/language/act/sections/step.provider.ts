@@ -9,8 +9,6 @@ export class GptStepProvider implements StepProvider {
     // TODO replace me with actual call
     return ['First paragraph', 'Second paragraph'];
   }
-
-
 }
 
 export class MockStepProvider implements StepProvider {
