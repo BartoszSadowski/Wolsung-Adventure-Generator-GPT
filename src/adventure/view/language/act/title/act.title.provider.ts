@@ -1,5 +1,5 @@
 import { Scene } from '../../../../scene/scene';
 
 export interface ActTitleProvider {
-  get(key: string, scene: Scene): string;
+  get(key: string, scene: Scene): Promise<string>;
 }

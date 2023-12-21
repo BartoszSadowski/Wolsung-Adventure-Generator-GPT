@@ -14,7 +14,8 @@ export class GptProvider {
     [SetupName.GENERATIVE]: {
       role: 'system',
       // eslint-disable-next-line max-len
-      content: 'You are a helpful assistant designed to support tabletop RPG adventure document preparations with plain text responses',
+      content: 'You are a helpful assistant designed to support tabletop RPG adventure document preparations with plain text responses.' +
+        'Return just a response for given request. ',
     },
     [SetupName.INFLECITON]: {
       role: 'system',

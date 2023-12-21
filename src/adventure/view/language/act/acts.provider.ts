@@ -17,7 +17,7 @@ export class ActsProvider {
   get(adventure: Adventure): Promise<Array<Act>> {
     return Promise.all(Object.entries(adventure)
       .map(async ([key, scene]) => new Act(
-        this.actTitleProvider.get(key, scene),
+        await this.actTitleProvider.get(key, scene),
         await this.goalProvider.get(scene),
         await this.sectionsProvider.get(scene),
         await this.advantagesProvider.get(scene),
