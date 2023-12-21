@@ -1,10 +1,13 @@
 import { TitleProvider } from './title.provider';
 import { GptProvider } from '../gpt/gpt.provider';
+import { Adventure } from '../../../adventure';
 
 export class GptTitleProvider implements TitleProvider {
-  get(): Promise<string> {
-    // TODO replace me with proper call relating to the adventure
+  get(adventure: Adventure): Promise<string> {
+    const adventureJson = JSON.stringify(adventure);
+
     return GptProvider.getGenerativeGpt()
-      .get('Nadaj nazwę przygodzie w stylu heist w steampunkowym świecie');
+      .get(`Nadaj tytuł następującej przygodzie: ${adventureJson}.
+      Użyj nie więcej niż 4 słowa.`);
   }
 }
