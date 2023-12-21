@@ -1,13 +1,11 @@
 import { Scene } from '../../../scene/scene';
 import { PartyType, partyTypeTranslations } from '../../../party/partyType';
 import { LearnAboutGoalSequenceProvider } from './learnAboutGoal.sequence.provider';
-import { GoalDescriptionSequenceProvider } from './goalDescription.sequence.provider';
 import { Parties } from '../../../party/parties';
+import { LearnGoalWrapper } from './learnGoal.wrapper';
 
 export class TeamUpScene extends Scene {
   private readonly learnAboutProvider = new LearnAboutGoalSequenceProvider();
-
-  private readonly goalDescriptionProvider = new GoalDescriptionSequenceProvider();
 
   constructor(parties: Parties) {
     super(parties);
@@ -31,8 +29,11 @@ export class TeamUpScene extends Scene {
   }
 
   private prepareSequence() {
-    this.sequence.push(this.learnAboutProvider.get(this.parties, this.locationBuilder));
-    this.sequence.push(this.goalDescriptionProvider.get(this.parties));
+    const learnAboutGoalStep = new LearnGoalWrapper(this.parties).wrap(
+      this.learnAboutProvider.get(this.parties, this.locationBuilder),
+    );
+
+    this.sequence.push(learnAboutGoalStep);
     this.sequence.push({
       who: partyTypeTranslations[PartyType.GM],
       what: 'Przedstawia startowy poziom napięcia: 1',

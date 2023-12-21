@@ -4,7 +4,7 @@ export enum LanguageProcessorConfigurationKeys {
   INFLECTION = 'INFLECTION',
   ADVANTAGES = 'ADVANTAGES',
   PLACE_OF_ACTION_DESCRIPTION = 'PLACE_OF_ACTION_DESCRIPTION',
-  STEP = 'STEP',
+  DESCRIPTION = 'DESCRIPTION',
 }
 
 export const languageProcessorConfiguration: Record<LanguageProcessorConfigurationKeys, boolean> = {
@@ -13,5 +13,5 @@ export const languageProcessorConfiguration: Record<LanguageProcessorConfigurati
   INFLECTION: false,
   ADVANTAGES: false,
   PLACE_OF_ACTION_DESCRIPTION: false,
-  STEP: false,
+  DESCRIPTION: false,
 };

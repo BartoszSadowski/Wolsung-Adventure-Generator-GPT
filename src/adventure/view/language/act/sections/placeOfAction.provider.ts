@@ -14,14 +14,14 @@ export class GptPlaceOfActionProvider implements PlaceOfActionProvider {
       .get(`Napisz akapit o tym, że akcja dzieje się w miejscu: ${placeOfAction}. 
       Rozpocznij sformułowaniem podobnym do "Drużyna znajduje się".`);
 
-    return new Section([description]);
+    return new Section(description);
   }
 }
 
 export class MockPlaceOfActionProvider implements PlaceOfActionProvider {
   async get(scene: Scene): Promise<Section> {
     return new Section(
-      [`Akcja dzieje się w ${scene.placeOfAction.name}`],
+      `Akcja dzieje się w ${scene.placeOfAction.name}`,
     );
   }
 }

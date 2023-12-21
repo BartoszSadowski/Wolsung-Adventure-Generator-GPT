@@ -20,7 +20,11 @@ import {
   MockPlaceOfActionProvider,
   PlaceOfActionProvider,
 } from './act/sections/placeOfAction.provider';
-import { GptStepProvider, MockStepProvider, StepProvider } from './act/sections/step.provider';
+import {
+  DescriptionProvider,
+  GptDescriptionProvider,
+  MockDescriptionProvider,
+} from './act/sections/descriptionProvider';
 import { TestProvider } from './act/sections/test.provider';
 
 export class LanguageProcessorProvider {
@@ -70,7 +74,7 @@ export class LanguageProcessorProvider {
   static getSectionsProvider() {
     return new SectionsProvider(
       this.getPlaceOfActionProvider(),
-      this.getStepProvider(),
+      this.getDescriptionProvider(),
       this.getTestProvider(),
     );
   }
@@ -84,11 +88,11 @@ export class LanguageProcessorProvider {
     );
   }
 
-  private static getStepProvider() {
-    return this.getProvider<StepProvider>(
-      LanguageProcessorConfigurationKeys.STEP,
-      GptStepProvider,
-      MockStepProvider,
+  private static getDescriptionProvider() {
+    return this.getProvider<DescriptionProvider>(
+      LanguageProcessorConfigurationKeys.DESCRIPTION,
+      GptDescriptionProvider,
+      MockDescriptionProvider,
     );
   }
 

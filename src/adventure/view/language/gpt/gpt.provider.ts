@@ -30,9 +30,15 @@ export class GptProvider {
     [SetupName.DESCRIPTION]: {
       role: 'system',
       content: 'You are writing parts of RPG adventure documents. ' +
+        'Adventure is taking place of steampunk world. ' +
+        'Modern inventions are replaced by ones using steam and mana (instead of electicity).' +
         'You are responding with paragraphs regarding assigned topic. ' +
-        'Do not use to much invention, if something is vague keep it that way.' +
-        'Do not add information about step of adventure',
+        'Paragraphs are directed to Game Master, as he is the one who will be reading those. ' +
+        'Do not introduce new characters. ' +
+        'Do not use to much invention, if something is vague keep it that way. ' +
+        'Do not add information about step of adventure. ' +
+        'Write responses in polish. ' +
+        'Do not adress the reader directly. ',
     },
   };
 

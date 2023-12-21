@@ -17,6 +17,7 @@ export class Gpt {
           role: 'user',
           content: prompt,
         }],
+      // model: 'gpt-4-0613',
       model: 'gpt-3.5-turbo-1106',
       response_format: { type: 'text' },
 

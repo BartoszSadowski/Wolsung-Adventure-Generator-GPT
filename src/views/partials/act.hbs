@@ -1,4 +1,4 @@
-<section>
+<section class="section">
     <h3>{{title}}</h3>
     {{#each goals}}
         <p>
@@ -8,72 +8,68 @@
     {{/each}}
 
     {{#each sections}}
-        <article class="section">
-            {{#each steps}}
-                <p>{{this}}</p>
-            {{/each}}
-            {{#if test}}
-                {{#with test}}
-                    <h4 class="margin-bottom-5 capitalize">{{type}}</h4>
-                    <p class="marginless"><span class="bold">Stawka:</span> {{result}}</p>
-                    <p class="marginless"><span class="bold">Konsekwencje:</span> {{consequence}}</p>
-                    <ul>
-                        {{#with challenge}}
-                            <li>
-                                <span class="bold">Poziom wyzwania {{challengeRating}}:</span>
-                                ST{{toughness}}, {{cards}}
-                            </li>
-                        {{/with}}
-                        {{modifiers}}
-                        {{#if aces}}
-                            <li>
-                                <span class="bold">Asy w rękawie</span>: {{aces}}
-                            </li>
-                        {{/if}}
-                        {{#if dangers}}
-                            <li>
-                                <span class="bold">Zagrożenia: </span>:
-                                <ul>
-                                    {{#each dangers}}
-                                        <li>
-                                            {{color}} {{description}} -
-                                            <span class="italic">{{name}} ({{result}})</span>
-                                        </li>
-                                    {{/each}}
-                                </ul>
-                            </li>
-                        {{/if}}
-                        {{#if chances}}
-                            <li>
-                                <span class="bold">Szanse: </span>:
-                                <ul>
-                                    {{#each chances}}
-                                        <li>
-                                            {{color}} {{description}} -
-                                            <span class="italic">{{name}} ({{result}})</span>
-                                        </li>
-                                    {{/each}}
-                                </ul>
-                            </li>
-                        {{/if}}
-                        {{#if abilities}}
-                            <li>
-                                <span class="bold">Zdolności: </span>:
-                                <ul>
-                                    {{#each abilities}}
-                                        <li>
-                                            <span class="bold">{{name}}</span>
-                                            {{description}}
-                                            <span class="italic">({{result}})</span>
-                                        </li>
-                                    {{/each}}
-                                </ul>
-                            </li>
-                        {{/if}}
-                    </ul>
-                {{/with}}
-            {{/if}}
-        </article>
+        <p>{{description}}</p>
+        {{#if test}}
+            {{#with test}}
+                <h4 class="margin-bottom-5 capitalize">{{type}}</h4>
+                <p class="marginless"><span class="bold">Stawka:</span> {{result}}</p>
+                <p class="marginless"><span class="bold">Konsekwencje:</span> {{consequence}}</p>
+                <ul>
+                    {{#with challenge}}
+                        <li>
+                            <span class="bold">Poziom wyzwania {{challengeRating}}:</span>
+                            ST{{toughness}}, {{cards}}
+                        </li>
+                    {{/with}}
+                    {{modifiers}}
+                    {{#if aces}}
+                        <li>
+                            <span class="bold">Asy w rękawie</span>: {{aces}}
+                        </li>
+                    {{/if}}
+                    {{#if dangers}}
+                        <li>
+                            <span class="bold">Zagrożenia: </span>:
+                            <ul>
+                                {{#each dangers}}
+                                    <li>
+                                        {{color}} {{description}} -
+                                        <span class="italic">{{name}} ({{result}})</span>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{/if}}
+                    {{#if chances}}
+                        <li>
+                            <span class="bold">Szanse: </span>:
+                            <ul>
+                                {{#each chances}}
+                                    <li>
+                                        {{color}} {{description}} -
+                                        <span class="italic">{{name}} ({{result}})</span>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{/if}}
+                    {{#if abilities}}
+                        <li>
+                            <span class="bold">Zdolności: </span>:
+                            <ul>
+                                {{#each abilities}}
+                                    <li>
+                                        <span class="bold">{{name}}</span>
+                                        {{description}}
+                                        <span class="italic">({{result}})</span>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{/if}}
+                </ul>
+            {{/with}}
+        {{/if}}
     {{/each}}
 
     {{#each advantages}}

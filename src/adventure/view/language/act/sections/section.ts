@@ -4,7 +4,7 @@ import { Ability } from '../../../../system/ability/ability';
 
 export class Section {
   constructor(
-    private readonly steps: Array<string>,
+    private readonly description: string,
     private readonly test?: Test,
   ) {
   }

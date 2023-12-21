@@ -1,13 +1,14 @@
 import { Scene, SequenceElement } from '../../../../scene/scene';
 import { PlaceOfActionProvider } from './placeOfAction.provider';
-import { StepProvider } from './step.provider';
+import { DescriptionProvider } from './descriptionProvider';
 import { Section } from './section';
 import { TestProvider } from './test.provider';
+import { PlaceOfAction } from '../../../../scene/placeOfAction';
 
 export class SectionsProvider {
   constructor(
     private readonly placeOfActionProvider: PlaceOfActionProvider,
-    private readonly stepProvider: StepProvider,
+    private readonly descriptionProvider: DescriptionProvider,
     private readonly testProvider: TestProvider,
   ) {
   }
@@ -22,11 +23,11 @@ export class SectionsProvider {
 
   getSequence(scene: Scene): Array<Promise<Section>> {
     return scene.sequence
-      .map(sequenceElement => this.getSection(sequenceElement));
+      .map(sequenceElement => this.getSection(sequenceElement, scene.placeOfAction));
   }
 
-  async getSection(sequenceElement: SequenceElement) {
-    const steps = await this.stepProvider.get(sequenceElement);
+  async getSection(sequenceElement: SequenceElement, placeOfAction: PlaceOfAction) {
+    const steps = await this.descriptionProvider.get(sequenceElement, placeOfAction);
     const test = await this.testProvider.get(sequenceElement);
 
     return new Section(

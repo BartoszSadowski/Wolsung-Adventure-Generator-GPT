@@ -1,21 +1,25 @@
-import { GoalParty } from '../../../party/goal/goal.party';
-import { TreasureProvider } from '../../../party/goal/treasure.provider';
-import { AntagonistParty } from '../../../party/antagonist/antagonist.party';
+import { SequenceElement } from '../../../scene/scene';
 import { Parties } from '../../../party/parties';
+import { GoalParty } from '../../../party/goal/goal.party';
+import { AntagonistParty } from '../../../party/antagonist/antagonist.party';
+import { TreasureProvider } from '../../../party/goal/treasure.provider';
 
-export class GoalDescriptionSequenceProvider {
+export class LearnGoalWrapper {
   private readonly treasureProvider = new TreasureProvider();
 
-  get(parties: Parties) {
+  constructor(private readonly parties: Parties) {
+  }
+
+  wrap(sequenceElement: SequenceElement): SequenceElement {
     return {
-      who: this.getGoal(parties),
-      what: 'zostaje wstępnie opisany',
+      ...sequenceElement,
+      what: `dowiaduje się o ${this.getGoal()}`,
     };
   }
 
-  getGoal(parties: Parties) {
-    const goalParty = parties.getGoalParty();
-    const antagonistParty = parties.getAntagonistParty();
+  getGoal() {
+    const goalParty = this.parties.getGoalParty();
+    const antagonistParty = this.parties.getAntagonistParty();
 
     return this.getName(goalParty, antagonistParty);
   }
