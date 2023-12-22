@@ -2,20 +2,26 @@
 <html lang="pl">
 <head>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <title>Wolsung: {{title}}</title>
 </head>
 <body>
 <h1>Wolsung</h1>
 <article>
     <h2>{{title}}</h2>
 
-    <section>
-        <h3></h3>
-        <p>Wstęp (do napisania)</p>
-        Zawarte bazowe informacje o świecie Wolsunga, oraz prośba o wyrozumiałość ze względu na automatyzację
-        generowania przygody.
-        <!-- TODO Zawrzeć informacje o tym że przygoda jest generowana, oraz bardzo pokrótce czym jest Wolsung -->
-        <p></p>
-    </section>
+    <p>
+        Niniejsza przygoda przygotowana została dla gry fabularnej
+        <span class="bold">Wolsung: Nowy Wspaniały Wiek</span> Artura Ganszyńca.
+        Wolsung jest grą akcji o niezwykłych damach i dżantelmenach biorących udział w spektakularnych zdarzeniach.
+        Akcja dzieje się na Urdzie, fantastycznym odpowiedniku Ziemi, na której ludźmi są znane z klasycznego fantasy
+        elfy, krasnoludy, orki, czy gnomy. Urda technologicznie przypomina znany nam przełom XIX i XX wieku, jednak
+        elektryczność zastępuje mana oraz para.
+    </p>
+
+    <p>
+        Do przygotowania przygody zostają wykorzystane metody generowania proceduralnego, oraz model językowy GPT.
+        Wynik który zaprezentowany zostaje poniżej, być może nigdy wcześniej nie został zaprezentowany.
+    </p>
 
     {{#each acts}}
         {{> act }}
