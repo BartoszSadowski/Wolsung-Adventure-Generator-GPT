@@ -7,7 +7,7 @@ export class GptActTitleProvider implements ActTitleProvider {
   async get(key: string, scene: Scene): Promise<string> {
     const sceneJson = JSON.stringify(scene);
 
-    const title = await GptProvider.getDescriptionGpt()
+    const title = await GptProvider.getGenerativeGpt()
       .get(`Napisz tytuł dla następującej sceny: ${sceneJson}.
       Nie używaj słowa tytuł.
       Użyj nie więcej niż 4 słów.`);

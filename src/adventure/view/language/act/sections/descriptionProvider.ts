@@ -8,12 +8,13 @@ export interface DescriptionProvider {
 
 export class GptDescriptionProvider implements DescriptionProvider {
   async get({ test, ...rest }: SequenceElement, placeOfAction: PlaceOfAction): Promise<string> {
-    const descriptionJson = JSON.stringify(rest);
+    const sceneJson = JSON.stringify(rest);
 
     return GptProvider.getDescriptionGpt()
       .get(`Napisz akapit opisujący fragment sceny do użycia w przygodzie przez mistrza gry.
       Akcja dzieje się w ${placeOfAction.name}, miejsce to zostało opisane już w poprzednim akapicie.
-      Użyj następującyhc danych: ${descriptionJson}`);
+      Nie wspominaj o miejscu akcji wprost.
+      Użyj następującyhc danych: ${sceneJson}`);
   }
 }
 

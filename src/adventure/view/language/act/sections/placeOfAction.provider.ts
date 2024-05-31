@@ -10,7 +10,7 @@ export class GptPlaceOfActionProvider implements PlaceOfActionProvider {
   async get(scene: Scene): Promise<Section> {
     const placeOfAction = JSON.stringify(scene.placeOfAction);
 
-    const description = await GptProvider.getGenerativeGpt()
+    const description = await GptProvider.getDescriptionGpt()
       .get(`Napisz akapit o tym, że akcja dzieje się w miejscu: ${placeOfAction}. 
       Rozpocznij sformułowaniem podobnym do "Drużyna znajduje się".`);
 

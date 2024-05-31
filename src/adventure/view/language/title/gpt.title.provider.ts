@@ -8,6 +8,7 @@ export class GptTitleProvider implements TitleProvider {
 
     return GptProvider.getGenerativeGpt()
       .get(`Nadaj tytuł następującej przygodzie: ${adventureJson}.
+      Nie używaj słowa tytuł.
       Użyj nie więcej niż 4 słowa.`);
   }
 }

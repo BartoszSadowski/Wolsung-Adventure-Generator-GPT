@@ -8,10 +8,10 @@ export enum LanguageProcessorConfigurationKeys {
 }
 
 export const languageProcessorConfiguration: Record<LanguageProcessorConfigurationKeys, boolean> = {
-  TITLE: false,
-  ACT_TITLE: false,
-  INFLECTION: false,
-  ADVANTAGES: false,
-  PLACE_OF_ACTION_DESCRIPTION: false,
-  DESCRIPTION: false,
+  TITLE: true,
+  ACT_TITLE: true,
+  INFLECTION: true,
+  ADVANTAGES: true,
+  PLACE_OF_ACTION_DESCRIPTION: true,
+  DESCRIPTION: true,
 };

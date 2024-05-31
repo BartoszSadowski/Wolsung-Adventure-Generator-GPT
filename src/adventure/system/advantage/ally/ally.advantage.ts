@@ -11,7 +11,7 @@ export class AllyAdvantage extends Advantage {
     name: string,
     description: string,
     traits: Array<Trait>,
-    public readonly allyDescription: AllyDescription,
+    public readonly additionalDescription: AllyDescription,
   ) {
     super(name, description, traits);
   }

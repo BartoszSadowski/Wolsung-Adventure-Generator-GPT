@@ -16,15 +16,15 @@ export class AllyProvider {
 
   get(parties: Parties, description: string, traits: Array<Trait>) {
     const country = this.getCountryFromParties(parties);
-    const allyDescription = this.getDescription(country);
+    const additionalDescription = this.getDescription(country);
 
-    const name = this.getName(allyDescription.gender, allyDescription.nationality);
+    const name = this.getName(additionalDescription.gender, additionalDescription.nationality);
 
     return new AllyAdvantage(
       name,
       description,
       traits,
-      allyDescription,
+      additionalDescription,
     );
   }
 
